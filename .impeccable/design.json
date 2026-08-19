@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-19T00:00:00Z",
+  "title": "Design System: Valhalla Barbershop",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Ground",
+        "canonical": "#08090a",
+        "tonalRamp": ["#08090a", "#0d0e10", "#121317", "#17191d", "#2a2d33", "#4a4e56", "#8d939c", "#f3f5f8"]
+      },
+      "ground-lift": {
+        "role": "neutral",
+        "displayName": "Ground Lift",
+        "canonical": "#0d0e10",
+        "tonalRamp": ["#08090a", "#0d0e10", "#121317", "#191b1f", "#2c2f35", "#4d5159", "#90959e", "#f4f6f9"]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Panel",
+        "canonical": "#121317",
+        "tonalRamp": ["#0a0b0d", "#121317", "#17191d", "#1f2126", "#33363d", "#565a63", "#979ca5", "#f5f6f9"]
+      },
+      "panel-raised": {
+        "role": "neutral",
+        "displayName": "Panel Raised",
+        "canonical": "#17191d",
+        "tonalRamp": ["#0b0c0e", "#131519", "#17191d", "#22252a", "#383c43", "#5c6069", "#9ba0a9", "#f5f7fa"]
+      },
+      "neon": {
+        "role": "primary",
+        "displayName": "Neon White",
+        "canonical": "#eaf4ff",
+        "tonalRamp": ["#0b1520", "#12283c", "#1a3c5b", "#27577f", "#3d7dae", "#6aa8d8", "#a8ccec", "#eaf4ff"]
+      },
+      "halo": {
+        "role": "primary",
+        "displayName": "Cold Halo",
+        "canonical": "rgb(142, 206, 255)",
+        "tonalRamp": ["#08131f", "#0e2740", "#173d62", "#22578a", "#3179b8", "#5b9fd8", "#8eceff", "#d6ecff"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#f3f5f8",
+        "tonalRamp": ["#111316", "#1e2126", "#2e3239", "#464b54", "#646a75", "#8d939c", "#bcc2ca", "#f3f5f8"]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink 2",
+        "canonical": "#bcc2ca",
+        "tonalRamp": ["#101216", "#1c1f24", "#2b2f36", "#434850", "#616770", "#8a9099", "#bcc2ca", "#eef0f3"]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink 3",
+        "canonical": "#8d939c",
+        "tonalRamp": ["#0f1115", "#1a1d22", "#282c32", "#3e434a", "#5b6068", "#8d939c", "#b6bbc2", "#e6e8ec"]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(255,255,255,.09)",
+        "tonalRamp": ["rgba(255,255,255,.04)", "rgba(255,255,255,.09)", "rgba(255,255,255,.16)", "rgba(255,255,255,.28)", "rgba(255,255,255,.40)", "rgba(255,255,255,.56)", "rgba(255,255,255,.74)", "rgba(255,255,255,.95)"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Sign", "purpose": "The wordmark only. One instance per page, lit as channel lettering in the hero." },
+      "headline": { "displayName": "Section Head", "purpose": "Section titles and the booking headline, always paired with the animated hairline rule." },
+      "title": { "displayName": "Title", "purpose": "Service names, prices, channel names, fact terms. Prices are set here, not at caption scale." },
+      "body": { "displayName": "Body", "purpose": "Every sentence a visitor reads. Measure capped 30–58ch per context." },
+      "label": { "displayName": "Label", "purpose": "Nav links, button text, durations, notes, footer heads. Tracking widens 0.11em→0.16em as size drops." }
+    },
+    "chamfer": [
+      { "name": "cut-thumb", "value": "9px", "purpose": "Service-row thumbnails." },
+      { "name": "cut-btn", "value": "12px", "purpose": "Buttons." },
+      { "name": "cut-default", "value": "14px", "purpose": "Global --cut; cards, .cutbox utility." },
+      { "name": "cut-wide", "value": "16px", "purpose": "The wide craft detail photograph." },
+      { "name": "cut-field", "value": "18px", "purpose": "Booking channel fields." }
+    ],
+    "shadows": [
+      { "name": "glow-s", "value": "0 0 1px rgba(255,255,255,.95), 0 0 6px rgba(142,206,255,.60), 0 0 18px rgba(142,206,255,.32)", "purpose": "Everything small and lit: dots, active locale, hovered service name and price, section-rule tips." },
+      { "name": "glow-m", "value": "0 0 1px #fff, 0 0 5px rgba(255,255,255,.85), 0 0 14px rgba(142,206,255,.65), 0 0 34px rgba(142,206,255,.38), 0 0 78px rgba(142,206,255,.20)", "purpose": "The wordmark only. Five-stop falloff so the sign reads as a lit face with atmosphere." },
+      { "name": "neon-contact", "value": "0 6px 26px -10px rgba(142,206,255,.85), 0 0 22px -6px rgba(142,206,255,.5)", "purpose": "Neon button and primary channel field: grounded and emitting at once." },
+      { "name": "panel-lift", "value": "0 14px 34px -20px rgba(0,0,0,.9), 0 0 26px -12px rgba(142,206,255,.5)", "purpose": "Secondary channel field on hover; the only dark shadow on a graphite plane." },
+      { "name": "tile-frame", "value": "inset 0 0 0 1px rgba(142,206,255,.55), inset 0 0 34px -8px rgba(142,206,255,.35)", "purpose": "Work tile on hover: the frame lights from within instead of the tile lifting." },
+      { "name": "tube-rule", "value": "0 0 10px rgba(142,206,255,.55), 0 0 30px rgba(142,206,255,.28)", "purpose": "The 1px neon rule along the hero's bottom edge and the divider above the booking section." }
+    ],
+    "motion": [
+      { "name": "ease-house", "value": "cubic-bezier(.16, .84, .32, 1)", "purpose": "The only easing in the system. All state, reveal, and layout transitions." },
+      { "name": "dur-state", "value": "0.28s", "purpose": "Button and control state changes." },
+      { "name": "dur-surface", "value": "0.35s", "purpose": "Nav stick, burger cross, menu, wash fades." },
+      { "name": "dur-open", "value": "0.42s", "purpose": "Service row opening outward on hover." },
+      { "name": "dur-reveal", "value": "0.8s", "purpose": "data-rise scroll reveal: 22px translate plus opacity." },
+      { "name": "rule-wipe", "value": "1.05s", "purpose": "Section hairline rule lighting out from the heading." },
+      { "name": "ignite", "value": "1.5s linear both", "purpose": "The one authored moment: the wordmark stutters to life like a starting tube, then hums at 5.5s ease-in-out infinite." },
+      { "name": "ticker", "value": "42s linear infinite", "purpose": "Service ticker marquee; pauses on hover." }
+    ],
+    "breakpoints": [
+      { "name": "row-stack", "value": "699px (max)" },
+      { "name": "hero-act", "value": "599px (max)" },
+      { "name": "sm", "value": "560px" },
+      { "name": "lg", "value": "900px" },
+      { "name": "xl", "value": "1200px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Neon Button",
+      "kind": "button",
+      "refersTo": "button-neon",
+      "description": "The primary action. Neon-white fill, dark ink, chamfered, grounded by a contact shadow that is also a glow.",
+      "html": "<a class=\"ds-btn ds-btn-neon\" href=\"#\">Reservar cita</a>",
+      "css": ".ds-btn{--cut:12px;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;font-family:'Archivo',system-ui,sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,.28);color:#f3f5f8;clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));transition:color .28s cubic-bezier(.16,.84,.32,1),background-color .28s cubic-bezier(.16,.84,.32,1),box-shadow .3s cubic-bezier(.16,.84,.32,1),transform .2s cubic-bezier(.16,.84,.32,1)}.ds-btn-neon{background:#eaf4ff;color:#08090a;border-color:#eaf4ff;box-shadow:0 6px 26px -10px rgba(142,206,255,.85),0 0 22px -6px rgba(142,206,255,.5)}.ds-btn-neon:hover{background:#fff;box-shadow:0 10px 34px -10px rgba(142,206,255,1),0 0 30px -4px rgba(142,206,255,.7);transform:translateY(-1px)}.ds-btn-neon:focus-visible{outline:2px solid #eaf4ff;outline-offset:3px}.ds-btn-neon:active{transform:translateY(0)}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "The secondary action beside it. A hairline-stroked wash that lights to neon on hover.",
+      "html": "<a class=\"ds-btn ds-btn-ghost\" href=\"#\">Ver precios</a>",
+      "css": ".ds-btn{--cut:12px;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;font-family:'Archivo',system-ui,sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,.28);color:#f3f5f8;clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));transition:color .28s cubic-bezier(.16,.84,.32,1),background-color .28s cubic-bezier(.16,.84,.32,1),border-color .28s,text-shadow .3s,transform .2s}.ds-btn-ghost{background:rgba(255,255,255,.03)}.ds-btn-ghost:hover{border-color:#eaf4ff;color:#eaf4ff;background:rgba(255,255,255,.06);text-shadow:0 0 1px rgba(255,255,255,.95),0 0 6px rgba(142,206,255,.6),0 0 18px rgba(142,206,255,.32)}.ds-btn-ghost:focus-visible{outline:2px solid #eaf4ff;outline-offset:3px}"
+    },
+    {
+      "name": "Primary Channel Field",
+      "kind": "card",
+      "refersTo": "channel-primary",
+      "description": "The booking section's promoted channel. A full-width neon slab with an 18px chamfer and an arrow that advances on hover — deliberately not one of three matching cards.",
+      "html": "<a class=\"ds-chan-pri\" href=\"#\"><svg class=\"ds-chan-ico\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12.04 2A9.9 9.9 0 0 0 2.1 11.9c0 1.75.46 3.46 1.34 4.97L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01A9.9 9.9 0 0 0 22 11.94 9.9 9.9 0 0 0 12.04 2Zm0 1.67a8.2 8.2 0 0 1 8.24 8.27 8.2 8.2 0 0 1-8.23 8.2h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.37 8.2 8.2 0 0 1 8.24-8.23Z\"/></svg><span class=\"ds-chan-k\">WhatsApp</span><span class=\"ds-chan-v\">Mensaje directo con el servicio ya escrito</span><svg class=\"ds-chan-go\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-chan-pri{--cut:18px;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:18px;row-gap:5px;align-items:center;padding:36px 30px;text-decoration:none;background:#eaf4ff;border:1px solid #eaf4ff;color:#08090a;clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));box-shadow:0 10px 34px -16px rgba(142,206,255,.9);transition:background-color .3s cubic-bezier(.16,.84,.32,1),transform .25s cubic-bezier(.16,.84,.32,1)}.ds-chan-ico{grid-row:1/3;width:42px;height:42px;fill:#08090a;color:#08090a}.ds-chan-k{font-family:'Big Shoulders Display','Arial Narrow',sans-serif;font-weight:700;font-size:2.2rem;text-transform:uppercase;letter-spacing:.02em;line-height:1}.ds-chan-v{font-family:'Archivo',system-ui,sans-serif;font-size:.87rem;line-height:1.4;color:#3a4048}.ds-chan-go{grid-row:1/3;grid-column:3;width:30px;height:30px;justify-self:end;transition:transform .32s cubic-bezier(.16,.84,.32,1)}.ds-chan-pri:hover{background:#fff;border-color:#fff}.ds-chan-pri:hover .ds-chan-go{transform:translateX(7px)}.ds-chan-pri:focus-visible{outline:2px solid #eaf4ff;outline-offset:3px}"
+    },
+    {
+      "name": "Secondary Channel Row",
+      "kind": "card",
+      "refersTo": "channel-secondary",
+      "description": "The alternative booking channels. Chrome is removed entirely — no fill, no chamfer, no shadow — so hierarchy comes from subtraction rather than from ranking three identical cards.",
+      "html": "<a class=\"ds-chan-sec\" href=\"#\"><svg class=\"ds-chan-ico2\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6.2 3.5h3l1.5 3.8-2 1.4a12.4 12.4 0 0 0 5.6 5.6l1.4-2 3.8 1.5v3a1.8 1.8 0 0 1-2 1.8A16.6 16.6 0 0 1 4.4 5.5a1.8 1.8 0 0 1 1.8-2Z\"/></svg><span class=\"ds-chan-k2\">Llamar</span><span class=\"ds-chan-v2\">+506 0000-0000</span></a>",
+      "css": ".ds-chan-sec{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:18px;row-gap:5px;align-items:center;padding:24px 6px;text-decoration:none;color:#f3f5f8;border-top:1px solid rgba(255,255,255,.16);transition:border-color .3s cubic-bezier(.16,.84,.32,1)}.ds-chan-ico2{grid-row:1/3;width:34px;height:34px;color:#bcc2ca;transition:color .3s,filter .4s}.ds-chan-k2{font-family:'Big Shoulders Display','Arial Narrow',sans-serif;font-weight:700;font-size:1.62rem;text-transform:uppercase;letter-spacing:.02em;line-height:1}.ds-chan-v2{font-family:'Archivo',system-ui,sans-serif;font-size:.87rem;line-height:1.4;color:#8d939c}.ds-chan-sec:hover{border-top-color:rgba(142,206,255,.55)}.ds-chan-sec:hover .ds-chan-ico2{color:#eaf4ff;filter:drop-shadow(0 0 6px rgba(142,206,255,.7))}.ds-chan-sec:focus-visible{outline:2px solid #eaf4ff;outline-offset:3px}"
+    },
+    {
+      "name": "Service Row",
+      "kind": "custom",
+      "refersTo": "service-row",
+      "description": "The service menu as a hairline-divided list. On hover the row opens outward by transform — media and body right, price left — and the name and price light neon.",
+      "html": "<a class=\"ds-row\" href=\"#\"><span class=\"ds-row-media\"></span><span class=\"ds-row-body\"><span class=\"ds-row-n\">Corte</span><span class=\"ds-row-d\">Lavado, corte a tijera y máquina, peinado y acabado con navaja en el contorno.</span></span><span class=\"ds-row-meta\"><span class=\"ds-row-t\">45 min</span><span class=\"ds-row-p\"><em class=\"ds-cur\">₡</em>8.000</span></span></a>",
+      "css": ".ds-row{display:grid;grid-template-columns:112px 1fr auto;align-items:center;gap:26px;padding:24px 0;position:relative;text-decoration:none;color:#f3f5f8;border-top:1px solid rgba(255,255,255,.09);border-bottom:1px solid rgba(255,255,255,.09)}.ds-row::before{content:\"\";position:absolute;inset:0 -24px;background:rgba(255,255,255,.035);opacity:0;transition:opacity .38s cubic-bezier(.16,.84,.32,1);pointer-events:none}.ds-row-media{width:112px;aspect-ratio:1;display:block;background:#17191d;clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px)}.ds-row-media,.ds-row-body,.ds-row-meta{transition:transform .42s cubic-bezier(.16,.84,.32,1)}.ds-row-body{display:block}.ds-row-n{display:block;font-family:'Big Shoulders Display','Arial Narrow',sans-serif;font-weight:800;font-size:2.15rem;line-height:.94;text-transform:uppercase;letter-spacing:-.005em;transition:color .3s,text-shadow .4s}.ds-row-d{display:block;margin-top:7px;font-family:'Archivo',system-ui,sans-serif;color:#8d939c;font-size:.92rem;line-height:1.55;max-width:52ch}.ds-row-meta{display:flex;flex-direction:column;align-items:flex-end;gap:5px;text-align:right}.ds-row-t{font-family:'Archivo',system-ui,sans-serif;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:#8d939c}.ds-row-p{font-family:'Big Shoulders Display','Arial Narrow',sans-serif;font-weight:700;font-size:2.05rem;line-height:1;white-space:nowrap;transition:color .3s,text-shadow .4s}.ds-cur{font-style:normal;font-size:.62em;color:#8d939c;margin-right:2px;vertical-align:.12em}@media (hover:hover){.ds-row:hover::before{opacity:1}.ds-row:hover .ds-row-media,.ds-row:hover .ds-row-body{transform:translateX(16px)}.ds-row:hover .ds-row-meta{transform:translateX(-16px)}.ds-row:hover .ds-row-n,.ds-row:hover .ds-row-p{color:#eaf4ff;text-shadow:0 0 1px rgba(255,255,255,.95),0 0 6px rgba(142,206,255,.6),0 0 18px rgba(142,206,255,.32)}}.ds-row:focus-visible{outline:2px solid #eaf4ff;outline-offset:3px}"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Sticky-bar link. A glowing 1px neon underline wipes in from the left on hover; the bar itself only gains its blurred ground once scrolled.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link\" href=\"#\">Servicios</a><a class=\"ds-nav-link\" href=\"#\">Trabajo</a><a class=\"ds-nav-link\" href=\"#\">El oficio</a></nav>",
+      "css": ".ds-nav{display:flex;gap:30px;align-items:center;padding:14px 24px;background:rgba(8,9,10,.86);backdrop-filter:blur(14px) saturate(1.2);border-bottom:1px solid rgba(255,255,255,.09)}.ds-nav-link{position:relative;padding:6px 0;font-family:'Archivo',system-ui,sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;text-decoration:none;color:#bcc2ca;transition:color .25s}.ds-nav-link::after{content:\"\";position:absolute;left:0;right:100%;bottom:0;height:1px;background:#eaf4ff;box-shadow:0 0 1px rgba(255,255,255,.95),0 0 6px rgba(142,206,255,.6),0 0 18px rgba(142,206,255,.32);transition:right .35s cubic-bezier(.16,.84,.32,1)}.ds-nav-link:hover{color:#f3f5f8}.ds-nav-link:hover::after{right:0}.ds-nav-link:focus-visible{outline:2px solid #eaf4ff;outline-offset:3px}"
+    },
+    {
+      "name": "Language Switch",
+      "kind": "chip",
+      "refersTo": "nav-link",
+      "description": "Two-token locale control in a hairline pill. The active token is neon with a small glow, and always carries aria-pressed so the light is never the only signal.",
+      "html": "<div class=\"ds-lang\" role=\"group\" aria-label=\"Idioma / Language\"><button type=\"button\" class=\"ds-lang-b ds-on\" aria-pressed=\"true\">ES</button><span class=\"ds-lang-s\" aria-hidden=\"true\"></span><button type=\"button\" class=\"ds-lang-b\" aria-pressed=\"false\">EN</button></div>",
+      "css": ".ds-lang{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.16);padding:5px 10px}.ds-lang-b{font-family:'Archivo',system-ui,sans-serif;font-size:.68rem;letter-spacing:.12em;font-weight:600;line-height:1;color:#8d939c;background:none;border:0;cursor:pointer;transition:color .2s,text-shadow .3s}.ds-lang-b.ds-on{color:#eaf4ff;text-shadow:0 0 1px rgba(255,255,255,.95),0 0 6px rgba(142,206,255,.6),0 0 18px rgba(142,206,255,.32)}.ds-lang-b:hover{color:#f3f5f8}.ds-lang-b:focus-visible{outline:2px solid #eaf4ff;outline-offset:3px}.ds-lang-s{width:1px;height:11px;background:rgba(255,255,255,.16)}"
+    },
+    {
+      "name": "Section Heading with Light Rule",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "Every section head: condensed uppercase title followed by a hairline that a neon light runs out along when the heading enters the viewport.",
+      "html": "<h2 class=\"ds-h2 ds-in\"><span>La carta</span><b class=\"ds-rule\" aria-hidden=\"true\"></b></h2>",
+      "css": ".ds-h2{display:flex;align-items:center;gap:28px;margin:0;font-family:'Big Shoulders Display','Arial Narrow',sans-serif;font-weight:800;font-size:3.5rem;line-height:.94;letter-spacing:-.015em;text-transform:uppercase;color:#f3f5f8}.ds-rule{flex:1;height:1px;background:rgba(255,255,255,.16);position:relative;overflow:visible}.ds-rule::after{content:\"\";position:absolute;inset:0 100% 0 0;background:#eaf4ff;box-shadow:0 0 8px rgba(142,206,255,.7),0 0 22px rgba(142,206,255,.35);transition:right 1.05s cubic-bezier(.16,.84,.32,1)}.ds-h2.ds-in .ds-rule::after{right:0}@media (prefers-reduced-motion:reduce){.ds-rule::after{right:0;transition:none}}"
+    },
+    {
+      "name": "Work Tile",
+      "kind": "card",
+      "refersTo": "service-row",
+      "description": "Portrait 3:4 photo tile in the work grid. The inset hairline frame lights from within on hover instead of the tile lifting off the page.",
+      "html": "<figure class=\"ds-tile\"><img src=\"data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23202329'/%3E%3C/svg%3E\" alt=\"\"></figure>",
+      "css": ".ds-tile{margin:0;overflow:hidden;position:relative;background:#121317;aspect-ratio:3/4}.ds-tile img{display:block;width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.16,.84,.32,1),filter .6s cubic-bezier(.16,.84,.32,1)}.ds-tile::after{content:\"\";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.09);transition:box-shadow .4s cubic-bezier(.16,.84,.32,1)}.ds-tile:hover img{transform:scale(1.05);filter:contrast(1.10) brightness(1.12)}.ds-tile:hover::after{box-shadow:inset 0 0 0 1px rgba(142,206,255,.55),inset 0 0 34px -8px rgba(142,206,255,.35)}"
+    },
+    {
+      "name": "Hours Table with Live Status",
+      "kind": "custom",
+      "refersTo": "body",
+      "description": "Borderless hairline-ruled table with tabular numerals, paired with a live open/closed line whose dot is neon and pulsing only when open — and whose status is always stated in words as well.",
+      "html": "<div><p class=\"ds-now ds-open\"><span class=\"ds-dot\" aria-hidden=\"true\"></span><span>Abierto ahora · cierra 20:00</span></p><table class=\"ds-hours\"><tr><th>Mar–Vie</th><td>10:00–20:00</td></tr><tr><th>Sáb</th><td>09:00–18:00</td></tr><tr><th>Dom–Lun</th><td class=\"ds-off\">Cerrado</td></tr></table></div>",
+      "css": ".ds-now{display:flex;align-items:center;gap:10px;margin:0 0 18px;font-family:'Archivo',system-ui,sans-serif;font-size:.79rem;letter-spacing:.09em;text-transform:uppercase;color:#8d939c}.ds-now.ds-open{color:#bcc2ca}.ds-dot{width:6px;height:6px;background:#8d939c;flex:0 0 auto}.ds-now.ds-open .ds-dot{background:#eaf4ff;box-shadow:0 0 1px rgba(255,255,255,.95),0 0 6px rgba(142,206,255,.6),0 0 18px rgba(142,206,255,.32);animation:ds-pulse 2.6s ease-in-out infinite}@keyframes ds-pulse{0%,100%{opacity:1}50%{opacity:.45}}@media (prefers-reduced-motion:reduce){.ds-now.ds-open .ds-dot{animation:none}}.ds-hours{width:100%;max-width:340px;border-collapse:collapse;font-family:'Archivo',system-ui,sans-serif}.ds-hours th,.ds-hours td{padding:8px 0;font-weight:400;font-size:.9rem;border-bottom:1px solid rgba(255,255,255,.09)}.ds-hours th{text-align:left;color:#8d939c}.ds-hours td{text-align:right;color:#f3f5f8;font-variant-numeric:tabular-nums}.ds-hours td.ds-off{color:#8d939c}.ds-hours tr:last-child th,.ds-hours tr:last-child td{border-bottom:0}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Night Sign",
+    "overview": "The page is a shop photographed after closing, lit by the one thing still switched on. Everything begins from a single premise: there is exactly one light source, it is a cold white neon sign, and every other surface in the composition is either graphite it has not reached or a hairline it just barely catches. That is not a mood applied on top of a layout — it is the physics the layout obeys. Light spills, blooms onto the band directly beneath the hero, ignites once on load, and thereafter hums like a real tube. Nothing else in the system is allowed to glow.\n\nDensity is generous and vertical. Sections are tall (76–148px of breathing room top and bottom), content is left-aligned and ranged against a 1280px container, and the type does the shouting so the decoration does not have to. Big Shoulders Display is set uppercase and tight — condensed, structural, closer to painted signage than to a fashion serif. Archivo carries every sentence a person actually has to read, at a comfortable 1.68 line-height, and never tries to be expressive.\n\nThe world refuses the barbershop template on record: no warm gold accent, no rounded photo cards, no crossed-razors badge, no sepia. It also refuses roundness entirely. Every panel, button, and thumbnail is chamfered — a corner cut on a 45° bevel like the ground edge of a blade — and that chamfer, not a radius, is the form signature. Photography is monochrome as a material fact, not as a filter.",
+    "keyCharacteristics": [
+      "One light source: cold neon white (#eaf4ff) with a blue-white halo (rgb(142,206,255)). Nothing else emits.",
+      "Zero border-radius anywhere; corners are chamfered instead.",
+      "Four graphite planes from #08090a to #17191d, separated by hairlines, never by shadows.",
+      "Condensed uppercase display against a plain workhorse text face.",
+      "All photography monochrome, graded in the file, never in CSS.",
+      "Mobile is the design; the desktop grid is the expansion of it."
+    ],
+    "rules": [
+      { "name": "The One Light Rule", "body": "There is a single emitting colour in this system and it is neon white. If a new element needs to feel important, it earns ink weight, a hairline, or a plane change — not a second glow. Two glowing things on one screen destroys the premise; count them before shipping.", "section": "colors" },
+      { "name": "The Halo-Never-Fills Rule", "body": "--halo may only ever appear inside a glow — box-shadow, text-shadow, drop-shadow, or a radial spill. The moment it becomes a background or a text colour, the page has a blue accent instead of a white light.", "section": "colors" },
+      { "name": "The Monochrome Source Rule", "body": "Photography ships pre-graded to monochrome in the image file (format=gray plus a lifted-black curve, documented in README). CSS adds no base filter to photography. A grayscale/brightness filter in the stylesheet double-darkens an already-graded asset; hover states may add contrast/brightness, never a base grade.", "section": "colors" },
+      { "name": "The Uppercase-Display Rule", "body": "Big Shoulders is only ever set uppercase. Mixed-case condensed reads as a compressed accident; the face is here because it behaves like painted signage.", "section": "typography" },
+      { "name": "The Tabular-Number Rule", "body": "Any column of numbers a visitor compares — the hours table, footer hours — uses font-variant-numeric: tabular-nums. Prices in the service menu are display-face and set as headlines, so they are exempt.", "section": "typography" },
+      { "name": "The Sub-Line Rule", "body": "The one line beneath the wordmark (\"Barbershop\", 0.52em tracking) belongs to the wordmark lockup and sits below it. Nothing on this site sets a small label above a heading.", "section": "typography" },
+      { "name": "The Clip-Not-Hidden Rule", "body": "overflow-x on html and body is clip, never hidden. hidden promotes the root to a scroll container and silently breaks position: sticky on the nav. Any future overflow containment at root level uses clip.", "section": "layout" },
+      { "name": "The Transform-Only Motion Rule", "body": "Layout responses to hover — the service row opening outward, the arrow advancing, the tile scaling — are done with transform, never by animating padding, width, or margin. Nothing reflows on hover.", "section": "layout" },
+      { "name": "The Set-In Rule", "body": "Surfaces are set into the page, not lifted off it. Reach for a plane change or a hairline before reaching for a shadow; a dark shadow is only permitted where an element is already emitting.", "section": "elevation" },
+      { "name": "The Spill Rule", "body": "A light source must illuminate something other than itself. The hero sign throws a mix-blend-mode: screen radial spill onto the photograph behind it, and the tube rule at the hero's bottom edge blooms 72px down onto the ticker band beneath. Any future light element in this system spills onto its neighbour.", "section": "elevation" },
+      { "name": "The Zero-Radius Rule", "body": "No border-radius value other than 0 may enter this system. Softness is not available; if a corner needs relief, it gets a chamfer.", "section": "shapes" },
+      { "name": "The Two-Corner Chamfer Rule", "body": "The bevel always cuts top-left and bottom-right, never all four. A four-corner chamfer reads as an octagon; two corners read as a cut edge, and consistent direction is what makes it a system instead of an effect.", "section": "shapes" },
+      { "name": "The State-Is-Never-Only-Light Rule", "body": "Neon may reinforce a state but never carry it alone. Open/closed, active locale, and current nav item each carry a text or ARIA signal alongside the glow. This is an accessibility invariant, not a preference.", "section": "components" }
+    ],
+    "dos": [
+      "Do keep exactly one emitting colour on screen. Neon white (#eaf4ff) plus its halo; nothing else glows.",
+      "Do chamfer every panel at 45° on the top-left and bottom-right corners, sized to the element (9px thumbnails, 12px buttons, 14px cards, 18px fields).",
+      "Do grade photography to monochrome in the image file and let CSS add nothing at rest.",
+      "Do build depth from planes and hairlines first — #08090a / #0d0e10 / #121317 / #17191d separated by 1px white at 9–28%.",
+      "Do make every light source spill onto what is behind or beneath it.",
+      "Do use overflow-x: clip at root, never hidden.",
+      "Do design the narrow view as its own composition — reflow the service price onto its own line, give the hero two equal full-width actions — rather than letting the desktop layout compress.",
+      "Do gate hover choreography behind (hover:hover) and honour prefers-reduced-motion by killing the ignite, hum, pulse, ticker, and reveal."
+    ],
+    "donts": [
+      "Don't introduce a border-radius. Not on an avatar, not on a badge, not on a form field.",
+      "Don't add a second accent hue — no gold, no red, no warm tone anywhere in the palette.",
+      "Don't apply grayscale() or brightness() as a base filter on photography; the file is already graded and CSS would double-darken it.",
+      "Don't use --halo as a fill, a text colour, or a border colour. It exists only inside glows.",
+      "Don't animate padding, width, or margin on hover — use transform so nothing reflows.",
+      "Don't rank parallel actions as three identical icon+heading+text cards; promote one to a field and strip the others to text rows.",
+      "Don't let neon be the only carrier of a state, and don't drop body text below ink-3 (#8d939c) on the graphite planes.",
+      "Don't set Big Shoulders in mixed case, and don't place a small uppercase label above a heading."
+    ]
+  }
+}
