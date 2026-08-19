@@ -26,9 +26,10 @@
     uppercase for display, Archivo for text. All photography is monochrome, so neon is the only colour.
   STORY: Visitor sees a shop lit at night, reads the service menu with real prices, sees the work,
     and books through WhatsApp, phone, or the online agenda.
-  FIRST VIEWPORT: Full-bleed monochrome shop photo under a heavy vignette; VALHALLA as neon tubing
-    at display scale, lower-left; one tagline; primary action directly beneath it; neon tube rule
-    along the bottom edge.
+  FIRST VIEWPORT: Full-bleed monochrome shop photo under a heavy vignette; VALHALLA as illuminated
+    channel lettering (a solid lit face throwing a cold halo and spill onto the photo behind it —
+    channel letters, not tube geometry) at display scale, lower-left; one tagline; primary action
+    directly beneath it; neon tube rule along the bottom edge.
   FORM: user-pinned reference layout (dark, condensed uppercase, photo-forward), palette replaced.
   FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
 -->
@@ -84,6 +85,7 @@
   <div class="hero__bg">
     <img src="assets/img/hero.jpg" alt="" width="2400" height="1400" fetchpriority="high" decoding="async">
   </div>
+  <div class="hero__glow" aria-hidden="true"></div>
   <div class="hero__in">
     <h1 class="sign">
       <span class="sign__word" data-neon>Valhalla</span>
@@ -105,8 +107,9 @@
 <!-- ════════ TICKER ════════ -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker__row" id="ticker">
-    <span>Corte</span><i></i><span>Barba</span><i></i><span>Afeitado clásico</span><i></i>
-    <span>Perfilado</span><i></i><span>Toalla caliente</span><i></i><span>Navaja</span><i></i>
+    <span data-i18n="tick.1">Corte</span><i></i><span data-i18n="tick.2">Barba</span><i></i>
+    <span data-i18n="tick.3">Afeitado clásico</span><i></i><span data-i18n="tick.4">Perfilado</span><i></i>
+    <span data-i18n="tick.5">Toalla caliente</span><i></i><span data-i18n="tick.6">Navaja</span><i></i>
   </div>
 </div>
 
@@ -221,6 +224,7 @@
         <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2A9.9 9.9 0 0 0 2.1 11.9c0 1.75.46 3.46 1.34 4.97L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01A9.9 9.9 0 0 0 22 11.94 9.9 9.9 0 0 0 12.04 2Z" fill="none"/><path d="M8.6 7.3c-.2-.45-.4-.46-.6-.47h-.5c-.18 0-.47.07-.71.34-.25.27-.94.9-.94 2.2s.96 2.56 1.1 2.74c.13.18 1.860 2.9 4.6 3.95 2.28.88 2.74.7 3.24.66.5-.05 1.6-.64 1.83-1.26.22-.62.22-1.15.16-1.26-.07-.11-.25-.18-.52-.31-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.13-.61.14-.18.27-.7.87-.86 1.05-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.34-1.6-1.5-1.87-.16-.27-.02-.42.12-.55.12-.12.27-.32.4-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.6-1.45-.85-1.98Z"/><path d="M12.04 2A9.9 9.9 0 0 0 2.1 11.9c0 1.75.46 3.46 1.34 4.97L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01A9.9 9.9 0 0 0 22 11.94 9.9 9.9 0 0 0 12.04 2Zm0 1.67a8.2 8.2 0 0 1 8.24 8.27 8.2 8.2 0 0 1-8.23 8.2h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.37 8.2 8.2 0 0 1 8.24-8.23Z"/></svg>
         <span class="chan__k" data-i18n="book.wa.k">WhatsApp</span>
         <span class="chan__v" data-i18n="book.wa.v">Mensaje directo con el servicio ya escrito</span>
+        <svg class="chan__go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
       </a>
 
       <a class="chan__c" id="telLink" href="#">
@@ -262,7 +266,7 @@
           <div>
             <h3 data-i18n="visit.addr">Dirección</h3>
             <p id="addrText">Av. Central 123, San José, Costa Rica</p>
-            <a class="lnk" id="mapLink" href="#" target="_blank" rel="noopener" data-i18n="visit.dir">Cómo llegar</a>
+            <a class="lnk" id="mapLink" href="#" target="_blank" rel="noopener"><span data-i18n="visit.dir">Cómo llegar</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
 
@@ -290,7 +294,7 @@
         <div class="visit__map-fb">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
           <p id="addrText3">Av. Central 123, San José, Costa Rica</p>
-          <a class="lnk" id="mapLink2" href="#" target="_blank" rel="noopener" data-i18n="visit.dir">Cómo llegar</a>
+          <a class="lnk" id="mapLink2" href="#" target="_blank" rel="noopener"><span data-i18n="visit.dir">Cómo llegar</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
         </div>
         <iframe id="mapFrame" title="Mapa de ubicación" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="about:blank"></iframe>
       </div>

@@ -141,7 +141,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
                             rgba(8,9,10,.10) 70%, rgba(8,9,10,.32) 100%),
     linear-gradient(to top, #08090a 0%, rgba(8,9,10,.58) 20%, rgba(8,9,10,.04) 50%, rgba(8,9,10,.34) 100%);
 }
-.hero__in{max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);width:100%;position:relative}
+.hero__in{max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);width:100%;position:relative;z-index:1}
+/* Spill: the sign throws light onto the photograph behind it. Without this the
+   one light source illuminates only itself, which no real sign does. */
+.hero__glow{position:absolute;left:0;bottom:0;z-index:0;pointer-events:none;
+  width:min(1180px,96%);height:min(820px,78%);mix-blend-mode:screen;
+  background:radial-gradient(54% 58% at 24% 60%,
+    rgba(196,228,255,.22) 0%, rgba(164,212,255,.12) 30%,
+    rgba(140,200,255,.05) 55%, rgba(140,200,255,0) 76%)}
 
 .sign{margin:0 0 clamp(18px,2.4vw,28px)}
 .sign__word{
@@ -180,7 +187,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .btn:active{transform:translateY(0)}
 
 /* ── TICKER ───────────────────────────────────────────────── */
-.ticker{border-block:1px solid var(--line);overflow:hidden;background:var(--bg-2);padding:13px 0}
+.ticker{border-block:1px solid var(--line);overflow:hidden;background:var(--bg-2);padding:13px 0;position:relative}
+/* the hero's tube rule blooms onto the band directly beneath it */
+.ticker::before{content:"";position:absolute;left:0;right:0;top:0;height:72px;pointer-events:none;z-index:1;
+  background:linear-gradient(to bottom,rgba(142,206,255,.11),rgba(142,206,255,0) 80%)}
 .ticker__row{display:flex;align-items:center;gap:28px;width:max-content;
   animation:slide 42s linear infinite;will-change:transform}
 .ticker__row span{font-family:var(--fd);font-weight:700;font-size:clamp(1.05rem,2vw,1.5rem);
@@ -246,7 +256,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* ── EL OFICIO ────────────────────────────────────────────── */
 .sec--craft{padding-block:0}
 .craft{display:grid;gap:0}
-.craft__media{position:relative;min-height:60svh}
+.craft__media{position:relative;aspect-ratio:4/3}
 .craft__media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .craft__media::after{content:"";position:absolute;inset:0;
   background:linear-gradient(to bottom,rgba(8,9,10,.35),rgba(8,9,10,.72))}
@@ -272,7 +282,21 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .book__in{text-align:center}
 .book__h{font-size:clamp(2.1rem,6vw,4rem);letter-spacing:-.02em}
 .book__lead{margin:16px auto 0;color:var(--ink-2);max-width:44ch}
-.chan{display:grid;gap:12px;margin-top:clamp(34px,4.5vw,54px);text-align:left}
+/* The primary channel is a field, not a card in a row of three; Call and
+   Agenda sit under it as text-led alternatives. Three identical icon+heading
+   +text cards is the shape this page exists to refuse. */
+.chan{display:grid;gap:0;margin-top:clamp(34px,4.5vw,54px);text-align:left}
+.chan__c--pri{padding:clamp(30px,3.4vw,40px) clamp(26px,3vw,34px);margin-bottom:18px}
+.chan__c--pri .chan__k{font-size:clamp(1.8rem,3.4vw,2.5rem)}
+.chan__c--pri{grid-template-columns:auto 1fr auto}
+.chan__c--pri .ico{width:42px;height:42px}
+.chan__go{grid-row:1/3;grid-column:3;width:30px;height:30px;justify-self:end;
+  transition:transform .32s var(--ease)}
+.chan__c--pri:hover .chan__go{transform:translateX(7px)}
+.chan__c:not(.chan__c--pri){background:none;border:0;border-top:1px solid var(--line-2);
+  clip-path:none;box-shadow:none;padding:24px 6px}
+.chan__c:not(.chan__c--pri):hover{background:none;transform:none;box-shadow:none;
+  border-top-color:rgba(var(--halo),.55)}
 .chan__c{--cut:18px;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;
   column-gap:18px;row-gap:5px;align-items:center;padding:30px 28px;background:var(--panel-2);
   border:1px solid var(--line-2);
@@ -306,7 +330,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   font-size:.79rem;letter-spacing:.11em;text-transform:uppercase;font-weight:600;
   border-bottom:1px solid rgba(var(--halo),.4);padding-bottom:3px;transition:border-color .3s,text-shadow .3s}
 .lnk:hover{border-bottom-color:var(--neon);text-shadow:var(--glow-s)}
-.lnk::after{content:"→";font-size:1.05em;line-height:1}
+.lnk svg{width:17px;height:17px;transition:transform .3s var(--ease)}
+.lnk:hover svg{transform:translateX(4px)}
 
 .hours{width:100%;max-width:340px;border-collapse:collapse}
 .hours th,.hours td{padding:8px 0;font-weight:400;font-size:.9rem;border-bottom:1px solid var(--line)}
@@ -316,7 +341,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .hours tr:last-child th,.hours tr:last-child td{border-bottom:0}
 
 .visit__map{position:relative;min-height:320px;border:1px solid var(--line-2);overflow:hidden;background:var(--panel)}
-.visit__map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(1) invert(.92) contrast(.86)}
+.visit__map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;
+  filter:grayscale(1) invert(1) brightness(.62) contrast(1.22)}
 .visit__map-fb{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;
   gap:12px;padding:28px;text-align:center;color:var(--ink-2)}
 .visit__map-fb .ico{width:26px;height:26px;color:var(--neon);filter:drop-shadow(0 0 6px rgba(var(--halo),.5))}
@@ -374,12 +400,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   /* the middle column drops — an even bottom edge would read as a stock grid */
   .grid > :nth-child(3n+2){margin-top:44px;margin-bottom:-44px}
   .craft{grid-template-columns:1fr 1fr;align-items:stretch}
-  .craft__media{min-height:100%}
+  .craft__media{aspect-ratio:auto;min-height:100%}
   .craft__body{padding-inline:clamp(40px,4.5vw,72px);margin:0;max-width:none;border-top:0;border-left:1px solid var(--line)}
-  /* WhatsApp is the primary channel, so it gets the larger field */
-  .chan{grid-template-columns:1.45fr 1fr 1fr}
-  .chan__c--pri{grid-column:auto}
-  .chan__c{padding:34px 30px}
+  .chan{grid-template-columns:1fr 1fr}
+  .chan__c--pri{grid-column:1/-1}
   .says{grid-template-columns:repeat(3,1fr)}
   .visit{grid-template-columns:1fr 1.15fr;align-items:start}
   .visit__map{min-height:460px}

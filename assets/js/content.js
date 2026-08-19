@@ -56,6 +56,9 @@ const I18N = {
     'skip': 'Saltar al contenido',
     'demo': 'Sitio de demostración — fotos, precios, horarios y opiniones son de ejemplo.',
 
+    'tick.1': 'Corte', 'tick.2': 'Barba', 'tick.3': 'Afeitado clásico',
+    'tick.4': 'Perfilado', 'tick.5': 'Toalla caliente', 'tick.6': 'Navaja',
+
     'nav.services': 'Servicios',
     'nav.work':     'Trabajo',
     'nav.craft':    'El oficio',
@@ -126,6 +129,9 @@ const I18N = {
   en: {
     'skip': 'Skip to content',
     'demo': 'Demo site — photos, prices, hours and reviews are placeholders.',
+
+    'tick.1': 'Haircut', 'tick.2': 'Beard', 'tick.3': 'Classic shave',
+    'tick.4': 'Shape-up', 'tick.5': 'Hot towel', 'tick.6': 'Straight razor',
 
     'nav.services': 'Services',
     'nav.work':     'Work',

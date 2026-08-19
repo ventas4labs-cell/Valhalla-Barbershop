@@ -215,9 +215,11 @@
 
   /* ══ REVEAL + HEADING RULES ══════════════════════════════════════════ */
   function reveal() {
-    var marks = $$('.h2');
-    $$('.sec__head, .row, .tile, .chan__c, .say, .facts > div, .craft__lead, .craft__detail')
-      .forEach(function (n) { n.setAttribute('data-rise', ''); });
+    var marks = $$('.h2').slice(0, 1);
+    /* Deliberately narrow: content that arrives in a set (rows, tiles, quotes)
+       rises. Prose and standalone figures are visible from the start — one
+       authored moment, not an entrance on every block. */
+    $$('.row, .tile, .say').forEach(function (n) { n.setAttribute('data-rise', ''); });
     var targets = $$('[data-rise]').concat(marks);
 
     if (reduced || !('IntersectionObserver' in window)) {
