@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Valhalla Barbershop — Corte, barba y afeitado clásico</title>
+<meta name="description" content="Valhalla Barbershop. Corte, barba y afeitado clásico con navaja. Reservá por WhatsApp, teléfono o agenda en línea.">
+<meta name="theme-color" content="#08090a">
+<meta property="og:title" content="Valhalla Barbershop">
+<meta property="og:description" content="Corte, barba y afeitado clásico con navaja.">
+<meta property="og:image" content="assets/img/hero.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Big+Shoulders+Display:wght@600;700;800;900&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308090a'/%3E%3Cpath d='M6 7l10 18L26 7' fill='none' stroke='%23eaf4ff' stroke-width='3'/%3E%3C/svg%3E">
+</head>
+<body>
+<!--
+  DIRECTION CONTRACT — seed: pinned-by-user-reference
+  THESIS: A barbershop lit like its own night sign. One white neon light source in total dark
+    carries the page; it refuses the gold-accent, rounded-photo-card barbershop template.
+  OWN-WORLD: Ground #08090A, graphite planes, hairline rules. Single light: neon white with a cold
+    halo. Zero border-radius — every panel is chamfered like a blade bevel. Big Shoulders Display
+    uppercase for display, Archivo for text. All photography is monochrome, so neon is the only colour.
+  STORY: Visitor sees a shop lit at night, reads the service menu with real prices, sees the work,
+    and books through WhatsApp, phone, or the online agenda.
+  FIRST VIEWPORT: Full-bleed monochrome shop photo under a heavy vignette; VALHALLA as neon tubing
+    at display scale, lower-left; one tagline; primary action directly beneath it; neon tube rule
+    along the bottom edge.
+  FORM: user-pinned reference layout (dark, condensed uppercase, photo-forward), palette replaced.
+  FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->
+
+<a class="skip" href="#main" data-i18n="skip">Saltar al contenido</a>
+
+<!-- DEMO STRIP — remove by setting DEMO_MODE=false in assets/js/content.js -->
+<div class="demo" id="demo" hidden>
+  <span data-i18n="demo">Sitio de demostración — fotos, precios, horarios y opiniones son de ejemplo.</span>
+</div>
+
+<header class="nav" id="nav">
+  <div class="nav__in">
+    <a class="mark" href="#top" aria-label="Valhalla Barbershop">
+      <svg class="mark__v" viewBox="0 0 34 26" aria-hidden="true"><path d="M2 2l15 22L32 2"/></svg>
+      <span class="mark__t">Valhalla</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Principal">
+      <a href="#servicios" data-i18n="nav.services">Servicios</a>
+      <a href="#trabajo" data-i18n="nav.work">Trabajo</a>
+      <a href="#oficio" data-i18n="nav.craft">El oficio</a>
+      <a href="#visitanos" data-i18n="nav.visit">Visitanos</a>
+    </nav>
+
+    <div class="nav__act">
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" class="lang__b is-on" data-setlang="es" aria-pressed="true">ES</button>
+        <span class="lang__s" aria-hidden="true"></span>
+        <button type="button" class="lang__b" data-setlang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn--neon nav__cta" href="#reservar" data-i18n="nav.book">Reservar</a>
+      <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Menú">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="menu" id="menu" hidden>
+    <a href="#servicios" data-i18n="nav.services">Servicios</a>
+    <a href="#trabajo" data-i18n="nav.work">Trabajo</a>
+    <a href="#oficio" data-i18n="nav.craft">El oficio</a>
+    <a href="#visitanos" data-i18n="nav.visit">Visitanos</a>
+    <a href="#reservar" class="menu__cta" data-i18n="nav.book">Reservar</a>
+  </div>
+</header>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- ════════ HERO ════════ -->
+<section class="hero">
+  <div class="hero__bg">
+    <img src="assets/img/hero.jpg" alt="" width="2400" height="1400" fetchpriority="high" decoding="async">
+  </div>
+  <div class="hero__in">
+    <h1 class="sign">
+      <span class="sign__word" data-neon>Valhalla</span>
+      <span class="sign__sub">Barbershop</span>
+    </h1>
+    <p class="hero__lead" data-i18n="hero.lead">Corte, barba y afeitado clásico con navaja. Sin prisa, sin improvisar.</p>
+    <div class="hero__act">
+      <a class="btn btn--neon btn--lg" href="#reservar" data-i18n="hero.cta1">Reservar cita</a>
+      <a class="btn btn--ghost btn--lg" href="#servicios" data-i18n="hero.cta2">Ver precios</a>
+    </div>
+    <p class="hero__now" id="heroNow">
+      <span class="dot" aria-hidden="true"></span>
+      <span data-i18n="hero.hours">Mar–Vie 10:00–20:00 · Sáb 09:00–18:00</span>
+    </p>
+  </div>
+  <div class="hero__tube" aria-hidden="true"></div>
+</section>
+
+<!-- ════════ TICKER ════════ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__row" id="ticker">
+    <span>Corte</span><i></i><span>Barba</span><i></i><span>Afeitado clásico</span><i></i>
+    <span>Perfilado</span><i></i><span>Toalla caliente</span><i></i><span>Navaja</span><i></i>
+  </div>
+</div>
+
+<!-- ════════ SERVICIOS / MENÚ ════════ -->
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sec__head">
+      <h2 class="h2"><span data-i18n="svc.h">La carta</span><b class="rule" aria-hidden="true"></b></h2>
+      <p class="sec__note" data-i18n="svc.note">Precios por servicio. Sin recargos escondidos.</p>
+    </div>
+
+    <!-- PLACEHOLDER: prices, durations and service names must be replaced with the shop's real menu. -->
+    <div class="menu-box">
+    <div class="menu-list__wash" id="wash" aria-hidden="true"></div>
+    <ul class="menu-list" id="menuList">
+      <li class="row" data-img="assets/img/svc-cut.jpg">
+        <div class="row__media"><img src="assets/img/svc-cut.jpg" alt="" loading="lazy" width="1000" height="1280"></div>
+        <div class="row__body">
+          <h3 class="row__n" data-i18n="svc.1.n">Corte</h3>
+          <p class="row__d" data-i18n="svc.1.d">Lavado, corte a tijera y máquina, peinado y acabado con navaja en el contorno.</p>
+        </div>
+        <div class="row__meta">
+          <span class="row__t" data-i18n="svc.1.t">45 min</span>
+          <span class="row__p"><em class="cur">₡</em>8.000</span>
+        </div>
+      </li>
+      <li class="row" data-img="assets/img/chair.jpg">
+        <div class="row__media"><img src="assets/img/chair.jpg" alt="" loading="lazy" width="859" height="1100"></div>
+        <div class="row__body">
+          <h3 class="row__n" data-i18n="svc.2.n">Corte + Barba</h3>
+          <p class="row__d" data-i18n="svc.2.d">El servicio completo: corte, perfilado de barba, toalla caliente y aceite.</p>
+        </div>
+        <div class="row__meta">
+          <span class="row__t" data-i18n="svc.2.t">70 min</span>
+          <span class="row__p"><em class="cur">₡</em>12.000</span>
+        </div>
+      </li>
+      <li class="row" data-img="assets/img/svc-shave.jpg">
+        <div class="row__media"><img src="assets/img/svc-shave.jpg" alt="" loading="lazy" width="1000" height="1280"></div>
+        <div class="row__body">
+          <h3 class="row__n" data-i18n="svc.3.n">Afeitado clásico</h3>
+          <p class="row__d" data-i18n="svc.3.d">Navaja, toalla caliente, pre-afeitado y bálsamo. El ritual completo, a pulso.</p>
+        </div>
+        <div class="row__meta">
+          <span class="row__t" data-i18n="svc.3.t">40 min</span>
+          <span class="row__p"><em class="cur">₡</em>9.000</span>
+        </div>
+      </li>
+      <li class="row" data-img="assets/img/svc-beard.jpg">
+        <div class="row__media"><img src="assets/img/svc-beard.jpg" alt="" loading="lazy" width="1000" height="1280"></div>
+        <div class="row__body">
+          <h3 class="row__n" data-i18n="svc.4.n">Perfilado de barba</h3>
+          <p class="row__d" data-i18n="svc.4.d">Definición de líneas a navaja, recorte a tijera y acondicionado.</p>
+        </div>
+        <div class="row__meta">
+          <span class="row__t" data-i18n="svc.4.t">30 min</span>
+          <span class="row__p"><em class="cur">₡</em>6.000</span>
+        </div>
+      </li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ TRABAJO ════════ -->
+<section class="sec sec--work" id="trabajo">
+  <div class="wrap">
+    <div class="sec__head">
+      <h2 class="h2"><span data-i18n="work.h">El trabajo</span><b class="rule" aria-hidden="true"></b></h2>
+      <p class="sec__note" data-i18n="work.note">Fotos de ejemplo. Se reemplazan por trabajo real del local.</p>
+    </div>
+  </div>
+  <div class="grid">
+    <figure class="tile tile--tall"><img src="assets/img/w1.jpg" alt="Degradado con máquina, perfil" loading="lazy" width="860" height="1100"></figure>
+    <figure class="tile"><img src="assets/img/w2.jpg" alt="Recorte de barba con máquina" loading="lazy" width="860" height="1100"></figure>
+    <figure class="tile"><img src="assets/img/w3.jpg" alt="Degradado corto en la nuca" loading="lazy" width="860" height="1100"></figure>
+    <figure class="tile tile--tall"><img src="assets/img/w4.jpg" alt="Acabado de contorno con máquina" loading="lazy" width="860" height="1100"></figure>
+    <figure class="tile"><img src="assets/img/w5.jpg" alt="Corte a tijera sobre peine" loading="lazy" width="860" height="1100"></figure>
+    <figure class="tile"><img src="assets/img/w6.jpg" alt="Afeitado a navaja con espuma" loading="lazy" width="860" height="1100"></figure>
+  </div>
+</section>
+
+<!-- ════════ EL OFICIO ════════ -->
+<section class="sec sec--craft" id="oficio">
+  <div class="craft">
+    <div class="craft__media">
+      <img src="assets/img/craft.jpg" alt="Barbero perfilando un degradado con peine y navaja" loading="lazy" width="1076" height="1400">
+    </div>
+    <div class="craft__body">
+      <h2 class="h2"><span data-i18n="craft.h">El oficio</span><b class="rule" aria-hidden="true"></b></h2>
+      <p class="craft__lead" data-i18n="craft.lead">Cada corte empieza con dos minutos de conversación. Lo que sale de esta silla tiene que aguantar cuatro semanas, no una foto.</p>
+      <dl class="facts">
+        <div><dt data-i18n="craft.f1t">Cita o walk-in</dt><dd data-i18n="craft.f1d">Reservá y entrás a la hora. Si caés sin cita, te decimos la espera real antes de que te sentés.</dd></div>
+        <div><dt data-i18n="craft.f2t">Herramienta limpia</dt><dd data-i18n="craft.f2d">Navaja de hoja desechable y máquina desinfectada entre cliente y cliente. Sin excepciones.</dd></div>
+        <div><dt data-i18n="craft.f3t">Si no queda, se arregla</dt><dd data-i18n="craft.f3d">Volvé dentro de los 7 días y lo corregimos sin cobrar.</dd></div>
+      </dl>
+      <figure class="craft__detail">
+        <img src="assets/img/tools.jpg" alt="Máquinas, peines y guardas ordenadas sobre la mesa de trabajo" loading="lazy" width="1800" height="787">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ RESERVAR ════════ -->
+<section class="book" id="reservar">
+  <div class="wrap book__in">
+    <h2 class="book__h" data-i18n="book.h">Reservá en 30 segundos</h2>
+    <p class="book__lead" data-i18n="book.lead">Elegí el canal que te sirva. Contestamos en horario de local.</p>
+
+    <div class="chan">
+      <a class="chan__c chan__c--pri" id="waLink" href="#" data-i18n-aria="book.wa.aria">
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2A9.9 9.9 0 0 0 2.1 11.9c0 1.75.46 3.46 1.34 4.97L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01A9.9 9.9 0 0 0 22 11.94 9.9 9.9 0 0 0 12.04 2Z" fill="none"/><path d="M8.6 7.3c-.2-.45-.4-.46-.6-.47h-.5c-.18 0-.47.07-.71.34-.25.27-.94.9-.94 2.2s.96 2.56 1.1 2.74c.13.18 1.860 2.9 4.6 3.95 2.28.88 2.74.7 3.24.66.5-.05 1.6-.64 1.83-1.26.22-.62.22-1.15.16-1.26-.07-.11-.25-.18-.52-.31-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.13-.61.14-.18.27-.7.87-.86 1.05-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.34-1.6-1.5-1.87-.16-.27-.02-.42.12-.55.12-.12.27-.32.4-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.6-1.45-.85-1.98Z"/><path d="M12.04 2A9.9 9.9 0 0 0 2.1 11.9c0 1.75.46 3.46 1.34 4.97L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01A9.9 9.9 0 0 0 22 11.94 9.9 9.9 0 0 0 12.04 2Zm0 1.67a8.2 8.2 0 0 1 8.24 8.27 8.2 8.2 0 0 1-8.23 8.2h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.37 8.2 8.2 0 0 1 8.24-8.23Z"/></svg>
+        <span class="chan__k" data-i18n="book.wa.k">WhatsApp</span>
+        <span class="chan__v" data-i18n="book.wa.v">Mensaje directo con el servicio ya escrito</span>
+      </a>
+
+      <a class="chan__c" id="telLink" href="#">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.2 3.5h3l1.5 3.8-2 1.4a12.4 12.4 0 0 0 5.6 5.6l1.4-2 3.8 1.5v3a1.8 1.8 0 0 1-2 1.8A16.6 16.6 0 0 1 4.4 5.5a1.8 1.8 0 0 1 1.8-2Z"/></svg>
+        <span class="chan__k" data-i18n="book.tel.k">Llamar</span>
+        <span class="chan__v" id="telText">+506 0000-0000</span>
+      </a>
+
+      <a class="chan__c" id="bookLink" href="#" target="_blank" rel="noopener">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.2" y="5" width="17.6" height="16" /><path d="M3.2 10h17.6M8 3v4M16 3v4M7.5 14h3M7.5 17.5h6"/></svg>
+        <span class="chan__k" data-i18n="book.ag.k">Agenda en línea</span>
+        <span class="chan__v" data-i18n="book.ag.v">Elegí día y hora vos mismo</span>
+      </a>
+    </div>
+
+    <!--
+      GOOGLE CALENDAR MOUNT POINT
+      Drop the scheduling embed (Google Calendar appointment schedule, Calendly, Booksy…) inside
+      #schedule-mount. The section is already sized for it; nothing else needs to change.
+      Google Calendar → Appointment schedules → Share → Embed. Then delete the `hidden` attribute.
+    -->
+    <div class="sched" id="schedule-mount" hidden></div>
+
+    <p class="book__fine" data-i18n="book.fine">Cancelaciones con 2 horas de anticipación, por el mismo canal.</p>
+  </div>
+</section>
+
+<!-- ════════ VISÍTANOS ════════ -->
+<section class="sec" id="visitanos">
+  <div class="wrap">
+    <div class="sec__head">
+      <h2 class="h2"><span data-i18n="visit.h">Visitanos</span><b class="rule" aria-hidden="true"></b></h2>
+    </div>
+
+    <div class="visit">
+      <div class="visit__info">
+        <div class="info">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <div>
+            <h3 data-i18n="visit.addr">Dirección</h3>
+            <p id="addrText">Av. Central 123, San José, Costa Rica</p>
+            <a class="lnk" id="mapLink" href="#" target="_blank" rel="noopener" data-i18n="visit.dir">Cómo llegar</a>
+          </div>
+        </div>
+
+        <div class="info">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="M12 7v5.2l3.2 2"/></svg>
+          <div>
+            <h3 data-i18n="visit.hours">Horario</h3>
+            <table class="hours">
+              <tbody>
+                <tr><th scope="row" data-i18n="d.mon">Lunes</th><td class="off" data-i18n="d.closed">Cerrado</td></tr>
+                <tr><th scope="row" data-i18n="d.tue">Martes</th><td>10:00 – 20:00</td></tr>
+                <tr><th scope="row" data-i18n="d.wed">Miércoles</th><td>10:00 – 20:00</td></tr>
+                <tr><th scope="row" data-i18n="d.thu">Jueves</th><td>10:00 – 20:00</td></tr>
+                <tr><th scope="row" data-i18n="d.fri">Viernes</th><td>10:00 – 20:00</td></tr>
+                <tr><th scope="row" data-i18n="d.sat">Sábado</th><td>09:00 – 18:00</td></tr>
+                <tr><th scope="row" data-i18n="d.sun">Domingo</th><td class="off" data-i18n="d.closed">Cerrado</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="visit__map">
+        <!-- Shown only if the embed is blocked or fails to load; the iframe covers it otherwise. -->
+        <div class="visit__map-fb">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          <p id="addrText3">Av. Central 123, San José, Costa Rica</p>
+          <a class="lnk" id="mapLink2" href="#" target="_blank" rel="noopener" data-i18n="visit.dir">Cómo llegar</a>
+        </div>
+        <iframe id="mapFrame" title="Mapa de ubicación" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="about:blank"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ OPINIONES (SAMPLE) ════════ -->
+<section class="sec sec--says" id="opiniones">
+  <div class="wrap">
+    <div class="sec__head">
+      <h2 class="h2"><span data-i18n="says.h">Lo que dicen</span><b class="rule" aria-hidden="true"></b></h2>
+      <p class="sec__note is-warn" data-i18n="says.note">Texto de ejemplo. Reemplazar por reseñas reales de Google antes de publicar.</p>
+    </div>
+    <ul class="says">
+      <li class="say">
+        <span class="say__tag" data-i18n="says.tag">Ejemplo</span>
+        <blockquote data-i18n="says.1">«Pedí que me lo dejaran para aguantar el mes y así salió. A las cuatro semanas todavía tenía forma.»</blockquote>
+        <cite data-i18n="says.1c">Reseña de ejemplo</cite>
+      </li>
+      <li class="say">
+        <span class="say__tag" data-i18n="says.tag">Ejemplo</span>
+        <blockquote data-i18n="says.2">«Llegué sin cita, me dijeron cuarenta minutos y fueron cuarenta minutos. Eso ya es raro.»</blockquote>
+        <cite data-i18n="says.2c">Reseña de ejemplo</cite>
+      </li>
+      <li class="say">
+        <span class="say__tag" data-i18n="says.tag">Ejemplo</span>
+        <blockquote data-i18n="says.3">«El afeitado con navaja y toalla caliente vale cada colón. Salí durmiendo de pie.»</blockquote>
+        <cite data-i18n="says.3c">Reseña de ejemplo</cite>
+      </li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div class="foot__brand">
+      <a class="mark mark--lg" href="#top" aria-label="Valhalla Barbershop">
+        <svg class="mark__v" viewBox="0 0 34 26" aria-hidden="true"><path d="M2 2l15 22L32 2"/></svg>
+        <span class="mark__t">Valhalla</span>
+      </a>
+      <p data-i18n="foot.blurb">Corte, barba y afeitado clásico con navaja.</p>
+      <div class="social">
+        <a id="igLink" href="#" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a id="fbLink" href="#" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M14.6 21v-7.6h2.6l.5-3h-3.1V8.5c0-.9.3-1.5 1.6-1.5h1.6V4.3A22 22 0 0 0 15.4 4C13 4 11.4 5.5 11.4 8.2v2.2H8.8v3h2.6V21"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <nav class="foot__col" aria-label="Enlaces">
+      <h3 data-i18n="foot.links">Navegación</h3>
+      <a href="#servicios" data-i18n="nav.services">Servicios</a>
+      <a href="#trabajo" data-i18n="nav.work">Trabajo</a>
+      <a href="#oficio" data-i18n="nav.craft">El oficio</a>
+      <a href="#reservar" data-i18n="nav.book">Reservar</a>
+    </nav>
+
+    <div class="foot__col">
+      <h3 data-i18n="foot.contact">Contacto</h3>
+      <a id="telLink2" href="#">+506 0000-0000</a>
+      <a id="waLink2" href="#">WhatsApp</a>
+      <p id="addrText2">Av. Central 123, San José, Costa Rica</p>
+    </div>
+
+    <div class="foot__col">
+      <h3 data-i18n="visit.hours">Horario</h3>
+      <p><span data-i18n="foot.h1">Mar – Vie</span> <b>10:00 – 20:00</b></p>
+      <p><span data-i18n="d.sat">Sábado</span> <b>09:00 – 18:00</b></p>
+      <p><span data-i18n="foot.h2">Dom y Lun</span> <b data-i18n="d.closed">Cerrado</b></p>
+    </div>
+  </div>
+  <div class="wrap foot__base">
+    <p>© <span id="yr">2026</span> Valhalla Barbershop</p>
+    <p class="foot__cred" data-i18n="foot.cred">Fotografía de ejemplo vía Unsplash — ver assets/img/CREDITS.md</p>
+  </div>
+</footer>
+
+<script src="assets/js/content.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
