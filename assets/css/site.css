@@ -316,8 +316,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .chan__c--pri .chan__v{color:#3a4048}
 .chan__c--pri:hover{background:#fff;border-color:#fff;color:#08090a}
 .chan__c--pri:hover .ico{color:#08090a;filter:none}
-.sched{margin-top:26px;border:1px solid var(--line-2);min-height:520px;background:var(--bg)}
+.sched{margin-top:30px;border:1px solid var(--line-2);min-height:560px;background:var(--bg);
+  text-align:left;overflow:hidden}
 .sched[hidden]{display:none}
+/* Cal.com paints its own surface; keep it inside the world's geometry */
+.sched > *{border-radius:0 !important}
+
+.plus{margin-top:6px;color:var(--ink-3);font-size:.82rem;letter-spacing:.04em}
+.plus b{color:var(--ink-2);font-weight:500;letter-spacing:.06em}
 .book__fine{margin-top:26px;color:var(--ink-3);font-size:.8rem;letter-spacing:.05em}
 
 /* ── VISÍTANOS ────────────────────────────────────────────── */

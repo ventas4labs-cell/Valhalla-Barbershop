@@ -21,21 +21,28 @@ const SHOP = {
     en: 'Hi Valhalla! I would like to book an appointment.'
   },
 
-  /* ── ONLINE BOOKING ⚠ REPLACE ───────────────────────────────────────────
-     Paste the public booking link (Booksy, Fresha, Calendly, or a Google
-     Calendar appointment-schedule link). Until it is set, the "Agenda en
-     línea" card falls back to WhatsApp so it is never a dead end.       */
-  bookingUrl: '',
+  /* ── ONLINE BOOKING ─────────────────────────────────────────────────────
+     The public Cal.com page. Opened by the "Agenda en línea" card.      */
+  bookingUrl: 'https://cal.com/gabriel-marcelo-hidalgo-castro-ov3cuj/30min',
 
-  /* ── GOOGLE CALENDAR (planned) ──────────────────────────────────────────
-     Paste the <iframe> src from Google Calendar →
-     Appointment schedules → Share → Embed. Leave empty until then; the
-     booking section renders correctly without it.                       */
+  /* ── LIVE AGENDA (Cal.com inline embed) ─────────────────────────────────
+     Same booking page, rendered inside the page so nobody has to leave.
+     It is the part after cal.com/ — no domain, no leading slash.
+     Set to '' to drop the embed and keep only the link.
+
+     Cal.com syncs both ways with Google Calendar: connect it once under
+     Cal.com → Settings → Calendars, and the slots shown here respect
+     whatever is already on that calendar.                              */
+  calLink: 'gabriel-marcelo-hidalgo-castro-ov3cuj/30min',
+
+  /* Raw <iframe> src, only if you ever swap Cal.com for a plain Google
+     Calendar appointment schedule. Ignored while calLink is set.        */
   calendarEmbed: '',
 
-  /* ── LOCATION ⚠ REPLACE ─────────────────────────────────────────────── */
-  address:   'Av. Central 123, San José, Costa Rica',
-  mapQuery:  'Av. Central 123, San José, Costa Rica',  // used for the map + directions
+  /* ── LOCATION ───────────────────────────────────────────────────────── */
+  address:   'San José, El Carmen, 10111',
+  plusCode:  'WW99+4V',                                 // Google Plus Code
+  mapQuery:  'WW99+4V San José, Costa Rica',            // map + directions target
 
   /* ── SOCIAL ⚠ REPLACE (leave empty to hide the icon) ────────────────── */
   instagram: '',
@@ -54,7 +61,7 @@ const SHOP = {
 const I18N = {
   es: {
     'skip': 'Saltar al contenido',
-    'demo': 'Sitio de demostración — fotos, precios, horarios y opiniones son de ejemplo.',
+    'demo': 'Sitio de demostración — fotos, precios y opiniones son de ejemplo.',
 
     'tick.1': 'Corte', 'tick.2': 'Barba', 'tick.3': 'Afeitado clásico',
     'tick.4': 'Perfilado', 'tick.5': 'Toalla caliente', 'tick.6': 'Navaja',
@@ -68,7 +75,7 @@ const I18N = {
     'hero.lead':  'Corte, barba y afeitado clásico con navaja. Sin prisa, sin improvisar.',
     'hero.cta1':  'Reservar cita',
     'hero.cta2':  'Ver precios',
-    'hero.hours': 'Mar–Vie 10:00–20:00 · Sáb 09:00–18:00',
+    'hero.hours': 'Lun–Sáb 11:00–20:00',
 
     'svc.h':    'La carta',
     'svc.note': 'Precios por servicio. Sin recargos escondidos.',
@@ -100,11 +107,12 @@ const I18N = {
     'book.wa.aria': 'Reservar por WhatsApp',
     'book.tel.k':   'Llamar',
     'book.ag.k':    'Agenda en línea',
-    'book.ag.v':    'Elegí día y hora vos mismo',
+    'book.ag.v':    'Elegí día y hora en la agenda',
     'book.fine':    'Cancelaciones con 2 horas de anticipación, por el mismo canal.',
 
     'visit.h':     'Visitanos',
     'visit.addr':  'Dirección',
+    'visit.plus':  'Código Plus',
     'visit.dir':   'Cómo llegar',
     'visit.hours': 'Horario',
     'd.mon': 'Lunes',   'd.tue': 'Martes', 'd.wed': 'Miércoles', 'd.thu': 'Jueves',
@@ -121,14 +129,13 @@ const I18N = {
     'foot.blurb':   'Corte, barba y afeitado clásico con navaja.',
     'foot.links':   'Navegación',
     'foot.contact': 'Contacto',
-    'foot.h1':      'Mar – Vie',
-    'foot.h2':      'Dom y Lun',
+    'foot.h1':      'Lunes – Sábado',
     'foot.cred':    'Fotografía de ejemplo vía Unsplash — ver assets/img/CREDITS.md'
   },
 
   en: {
     'skip': 'Skip to content',
-    'demo': 'Demo site — photos, prices, hours and reviews are placeholders.',
+    'demo': 'Demo site — photos, prices and reviews are placeholders.',
 
     'tick.1': 'Haircut', 'tick.2': 'Beard', 'tick.3': 'Classic shave',
     'tick.4': 'Shape-up', 'tick.5': 'Hot towel', 'tick.6': 'Straight razor',
@@ -142,7 +149,7 @@ const I18N = {
     'hero.lead':  'Cuts, beards and classic straight-razor shaves. No rush, nothing improvised.',
     'hero.cta1':  'Book a chair',
     'hero.cta2':  'See prices',
-    'hero.hours': 'Tue–Fri 10:00–20:00 · Sat 09:00–18:00',
+    'hero.hours': 'Mon–Sat 11:00–20:00',
 
     'svc.h':    'The menu',
     'svc.note': 'Priced per service. No hidden add-ons.',
@@ -174,11 +181,12 @@ const I18N = {
     'book.wa.aria': 'Book via WhatsApp',
     'book.tel.k':   'Call',
     'book.ag.k':    'Online agenda',
-    'book.ag.v':    'Pick your own day and time',
+    'book.ag.v':    'Pick your own slot in the agenda',
     'book.fine':    'Cancellations at least 2 hours ahead, through the same channel.',
 
     'visit.h':     'Visit us',
     'visit.addr':  'Address',
+    'visit.plus':  'Plus Code',
     'visit.dir':   'Get directions',
     'visit.hours': 'Hours',
     'd.mon': 'Monday',  'd.tue': 'Tuesday',  'd.wed': 'Wednesday', 'd.thu': 'Thursday',
@@ -195,8 +203,7 @@ const I18N = {
     'foot.blurb':   'Cuts, beards and classic straight-razor shaves.',
     'foot.links':   'Navigation',
     'foot.contact': 'Contact',
-    'foot.h1':      'Tue – Fri',
-    'foot.h2':      'Sun & Mon',
+    'foot.h1':      'Monday – Saturday',
     'foot.cred':    'Sample photography via Unsplash — see assets/img/CREDITS.md'
   }
 };

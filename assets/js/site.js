@@ -14,8 +14,13 @@
      0 = Sunday … 6 = Saturday. null = closed.
      The table in index.html is the no-JS fallback; keep it in step.
      ─────────────────────────────────────────────────────────────────── */
-  var HOURS = [null, null, ['10:00','20:00'], ['10:00','20:00'],
-               ['10:00','20:00'], ['10:00','20:00'], ['09:00','18:00']];
+  var HOURS = [null,               // Sunday — closed
+               ['11:00','20:00'],  // Monday
+               ['11:00','20:00'],  // Tuesday
+               ['11:00','20:00'],  // Wednesday
+               ['11:00','20:00'],  // Thursday
+               ['11:00','20:00'],  // Friday
+               ['11:00','20:00']]; // Saturday
 
   var LANG_KEY = 'valhalla.lang';
   var lang = SHOP.defaultLang;
@@ -35,6 +40,8 @@
       if (n.id === 'telLink2') n.textContent = SHOP.phone; else n.textContent = SHOP.phone;
     });
     $$('#addrText, #addrText2, #addrText3').forEach(function (n) { n.textContent = SHOP.address; });
+    var pc = $('#plusText');
+    if (pc) { if (SHOP.plusCode) { pc.textContent = SHOP.plusCode; } else { pc.parentElement.remove(); } }
 
     var maps = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(SHOP.mapQuery);
     $$('#mapLink, #mapLink2').forEach(function (a) { a.href = maps; });
@@ -65,9 +72,12 @@
       } else { load(); }
     }
 
-    /* Google Calendar embed, when configured. */
+    /* Live agenda. Cal.com wins when configured; a raw iframe is the
+       fallback for a plain Google Calendar appointment schedule. */
     var mount = $('#schedule-mount');
-    if (mount && SHOP.calendarEmbed) {
+    if (!mount) return;
+    if (SHOP.calLink) { mountCal(mount); }
+    else if (SHOP.calendarEmbed) {
       var f = document.createElement('iframe');
       f.src = SHOP.calendarEmbed;
       f.style.cssText = 'width:100%;height:520px;border:0';
@@ -77,6 +87,79 @@
       mount.appendChild(f);
       mount.hidden = false;
     }
+  }
+
+  /* ══ CAL.COM INLINE AGENDA ═══════════════════════════════════════════
+     Loaded lazily — the script is ~90KB and most visitors book by tapping
+     WhatsApp, so it must not sit in the critical path. It boots only when
+     the booking section is near the viewport.
+     ═════════════════════════════════════════════════════════════════════ */
+  var calBooted = false;
+
+  function bootCalScript() {
+    if (window.Cal) return;
+    /* Official Cal.com embed loader (queues calls until embed.js lands). */
+    (function (C, A, L) {
+      var p = function (a, ar) { a.q.push(ar); };
+      var d = C.document;
+      C.Cal = C.Cal || function () {
+        var cal = C.Cal, ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {}; cal.q = cal.q || [];
+          d.head.appendChild(d.createElement('script')).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          var api = function () { p(api, arguments); };
+          var namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === 'string') {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar); p(cal, ['initNamespace', namespace]);
+          } else { p(cal, ar); }
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, 'https://app.cal.com/embed/embed.js', 'init');
+  }
+
+  function mountCal(mount) {
+    var start = function () {
+      if (calBooted) return;
+      calBooted = true;
+      bootCalScript();
+      mount.hidden = false;
+      try {
+        window.Cal('init', { origin: 'https://app.cal.com' });
+        window.Cal('inline', {
+          elementOrSelector: '#schedule-mount',
+          calLink: SHOP.calLink,
+          /* We ask Cal for the page's language, but it overrides this from
+             the Cal.com account setting — the agenda currently renders in
+             Spanish in both locales. Change it in
+             Cal.com → Settings → General → Language. */
+          config: { layout: 'month_view', theme: 'dark', locale: lang }
+        });
+        window.Cal('ui', {
+          theme: 'dark',
+          layout: 'month_view',
+          hideEventTypeDetails: false,
+          cssVarsPerTheme: { dark: { 'cal-brand': '#eaf4ff' } }
+        });
+      } catch (e) {
+        /* Never strand the visitor in an empty box: the three channel
+           cards above still work, so just drop the embed. */
+        mount.hidden = true;
+      }
+    };
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { start(); io.disconnect(); } });
+      }, { rootMargin: '600px' });
+      io.observe(mount.parentElement || mount);
+    } else { start(); }
   }
 
   /* ══ DEMO MODE ═══════════════════════════════════════════════════════ */

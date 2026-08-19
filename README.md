@@ -28,8 +28,8 @@ Casi todo se cambia en **un solo archivo**: [`assets/js/content.js`](assets/js/c
 | Qué querés cambiar | Dónde |
 |---|---|
 | Teléfono, WhatsApp, dirección, redes | `SHOP` en `assets/js/content.js` |
-| Link de agenda en línea (Booksy / Fresha / Calendly) | `SHOP.bookingUrl` |
-| Embed de Google Calendar | `SHOP.calendarEmbed` |
+| Link de la agenda (Cal.com) | `SHOP.bookingUrl` |
+| Agenda incrustada en la página | `SHOP.calLink` |
 | Textos en español e inglés | `I18N.es` / `I18N.en` en el mismo archivo |
 | Horario de atención | `HOURS` al inicio de `assets/js/site.js` |
 | Servicios, precios y duraciones | `index.html`, sección `<section id="servicios">` |
@@ -54,13 +54,16 @@ abajo esté reemplazado por información real.**
 
 Nada de esto es información real del local. Todo fue inventado como marcador de posición.
 
-**Contacto y ubicación** — `assets/js/content.js`
-- [ ] `phone` y `phoneDial` — hoy `+506 0000-0000`
+**Contacto** — `assets/js/content.js`
+- [ ] `phone` y `phoneDial` — hoy `+506 0000-0000` ← **lo único de contacto que falta**
 - [ ] `whatsapp` — hoy `50600000000`
-- [ ] `address` y `mapQuery` — hoy `Av. Central 123, San José, Costa Rica`
 - [ ] `instagram` y `facebook` — hoy vacíos (los íconos se ocultan solos hasta que se llenen)
-- [ ] `bookingUrl` — hoy vacío; mientras esté vacío, la tarjeta "Agenda en línea" manda a
-      WhatsApp para que nunca sea un callejón sin salida
+
+**Ya son reales, no tocar salvo que cambien**
+- ✅ Dirección: San José, El Carmen, 10111 · Código Plus `WW99+4V`
+- ✅ Horario: Lunes a Sábado, 11:00–20:00. Domingo cerrado
+- ✅ Agenda: `cal.com/gabriel-marcelo-hidalgo-castro-ov3cuj/30min`, con el
+      calendario incrustado en la sección de reservas
 
 **Servicios y precios** — `index.html`
 - [ ] Los cuatro servicios, sus descripciones, duraciones y precios (₡8.000 / ₡12.000 /
@@ -69,10 +72,10 @@ Nada de esto es información real del local. Todo fue inventado como marcador de
       (cita o walk-in, herramienta limpia, corrección gratis dentro de 7 días).
       **Si alguna no se cumple, borrala** — es una promesa al cliente, no relleno
 
-**Horario** — `assets/js/site.js`
-- [ ] `HOURS` (arriba del archivo) controla la tabla y el indicador "Abierto ahora"
-- [ ] La tabla dentro de `index.html` es el respaldo para navegadores sin JavaScript:
-      **si cambiás uno, cambiá el otro**
+**Horario** — ya es real, pero vive en dos lugares
+- `HOURS` en `assets/js/site.js` manda: controla la tabla y el "Abierto ahora"
+- La tabla en `index.html` es el respaldo para navegadores sin JavaScript.
+  **Si cambiás uno, cambiá el otro**
 
 **Opiniones** — `index.html`, sección `id="opiniones"`
 - [ ] Las tres reseñas son **texto inventado** y están marcadas como *Ejemplo*.
@@ -108,14 +111,25 @@ Los originales a color quedaron en `_source-photos/`.
 
 ---
 
-## Google Calendar (pendiente)
+## La agenda (Cal.com)
 
-La sección de reservas ya tiene el espacio reservado. Cuando tengás el embed:
+La agenda de Cal.com está incrustada debajo de los tres canales de reserva, en tema
+oscuro, y se carga sola cuando el visitante se acerca a esa sección (el script pesa
+~90KB y no debe frenar la carga de la página).
 
-1. Google Calendar → *Programaciones de citas* → *Compartir* → *Insertar*
-2. Copiá el `src` del `<iframe>` a `SHOP.calendarEmbed` en `assets/js/content.js`
+**Google Calendar:** conectalo una sola vez en Cal.com → *Settings* → *Calendars*.
+Cal.com sincroniza en ambos sentidos, así que los horarios que muestra el sitio ya
+respetan lo que tengás en tu Google Calendar. No hace falta tocar el código.
 
-Aparece automáticamente debajo de las tres tarjetas de reserva. No hay que tocar el diseño.
+**Dos cosas por revisar en Cal.com, no en el sitio:**
+
+1. **El evento dura 30 minutos, pero la carta tiene cuatro servicios de 45, 70, 40 y
+   30 min.** Quien reserve "Corte + Barba" está apartando 30 minutos para un servicio
+   de 70. Conviene crear un tipo de evento por servicio y poner cada link en su fila
+   de la carta, o dejar un solo evento genérico y ajustar la duración a mano.
+2. **La agenda se muestra en español aunque el sitio esté en inglés.** Cal.com usa el
+   idioma de tu cuenta y ignora el del sitio. Se cambia en
+   Cal.com → *Settings* → *General* → *Language*.
 
 ---
 

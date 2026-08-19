@@ -38,7 +38,7 @@
 
 <!-- DEMO STRIP — remove by setting DEMO_MODE=false in assets/js/content.js -->
 <div class="demo" id="demo" hidden>
-  <span data-i18n="demo">Sitio de demostración — fotos, precios, horarios y opiniones son de ejemplo.</span>
+  <span data-i18n="demo">Sitio de demostración — fotos, precios y opiniones son de ejemplo.</span>
 </div>
 
 <header class="nav" id="nav">
@@ -98,7 +98,7 @@
     </div>
     <p class="hero__now" id="heroNow">
       <span class="dot" aria-hidden="true"></span>
-      <span data-i18n="hero.hours">Mar–Vie 10:00–20:00 · Sáb 09:00–18:00</span>
+      <span data-i18n="hero.hours">Lun–Sáb 11:00–20:00</span>
     </p>
   </div>
   <div class="hero__tube" aria-hidden="true"></div>
@@ -267,7 +267,8 @@
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
           <div>
             <h3 data-i18n="visit.addr">Dirección</h3>
-            <p id="addrText">Av. Central 123, San José, Costa Rica</p>
+            <p id="addrText">San José, El Carmen, 10111</p>
+            <p class="plus"><span data-i18n="visit.plus">Código Plus</span> <b id="plusText">WW99+4V</b></p>
             <a class="lnk" id="mapLink" href="#" target="_blank" rel="noopener"><span data-i18n="visit.dir">Cómo llegar</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
@@ -278,12 +279,12 @@
             <h3 data-i18n="visit.hours">Horario</h3>
             <table class="hours">
               <tbody>
-                <tr><th scope="row" data-i18n="d.mon">Lunes</th><td class="off" data-i18n="d.closed">Cerrado</td></tr>
-                <tr><th scope="row" data-i18n="d.tue">Martes</th><td>10:00 – 20:00</td></tr>
-                <tr><th scope="row" data-i18n="d.wed">Miércoles</th><td>10:00 – 20:00</td></tr>
-                <tr><th scope="row" data-i18n="d.thu">Jueves</th><td>10:00 – 20:00</td></tr>
-                <tr><th scope="row" data-i18n="d.fri">Viernes</th><td>10:00 – 20:00</td></tr>
-                <tr><th scope="row" data-i18n="d.sat">Sábado</th><td>09:00 – 18:00</td></tr>
+                <tr><th scope="row" data-i18n="d.mon">Lunes</th><td>11:00 – 20:00</td></tr>
+                <tr><th scope="row" data-i18n="d.tue">Martes</th><td>11:00 – 20:00</td></tr>
+                <tr><th scope="row" data-i18n="d.wed">Miércoles</th><td>11:00 – 20:00</td></tr>
+                <tr><th scope="row" data-i18n="d.thu">Jueves</th><td>11:00 – 20:00</td></tr>
+                <tr><th scope="row" data-i18n="d.fri">Viernes</th><td>11:00 – 20:00</td></tr>
+                <tr><th scope="row" data-i18n="d.sat">Sábado</th><td>11:00 – 20:00</td></tr>
                 <tr><th scope="row" data-i18n="d.sun">Domingo</th><td class="off" data-i18n="d.closed">Cerrado</td></tr>
               </tbody>
             </table>
@@ -295,7 +296,7 @@
         <!-- Shown only if the embed is blocked or fails to load; the iframe covers it otherwise. -->
         <div class="visit__map-fb">
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
-          <p id="addrText3">Av. Central 123, San José, Costa Rica</p>
+          <p id="addrText3">San José, El Carmen, 10111</p>
           <a class="lnk" id="mapLink2" href="#" target="_blank" rel="noopener"><span data-i18n="visit.dir">Cómo llegar</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
         </div>
         <iframe id="mapFrame" title="Mapa de ubicación" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="about:blank"></iframe>
@@ -362,14 +363,13 @@
       <h3 data-i18n="foot.contact">Contacto</h3>
       <a id="telLink2" href="#">+506 0000-0000</a>
       <a id="waLink2" href="#">WhatsApp</a>
-      <p id="addrText2">Av. Central 123, San José, Costa Rica</p>
+      <p id="addrText2">San José, El Carmen, 10111</p>
     </div>
 
     <div class="foot__col">
       <h3 data-i18n="visit.hours">Horario</h3>
-      <p><span data-i18n="foot.h1">Mar – Vie</span> <b>10:00 – 20:00</b></p>
-      <p><span data-i18n="d.sat">Sábado</span> <b>09:00 – 18:00</b></p>
-      <p><span data-i18n="foot.h2">Dom y Lun</span> <b data-i18n="d.closed">Cerrado</b></p>
+      <p><span data-i18n="foot.h1">Lunes – Sábado</span> <b>11:00 – 20:00</b></p>
+      <p><span data-i18n="d.sun">Domingo</span> <b data-i18n="d.closed">Cerrado</b></p>
     </div>
   </div>
   <div class="wrap foot__base">
