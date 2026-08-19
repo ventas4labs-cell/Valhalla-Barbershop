@@ -293,10 +293,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .chan__go{grid-row:1/3;grid-column:3;width:30px;height:30px;justify-self:end;
   transition:transform .32s var(--ease)}
 .chan__c--pri:hover .chan__go{transform:translateX(7px)}
-.chan__c:not(.chan__c--pri){background:none;border:0;border-top:1px solid var(--line-2);
-  clip-path:none;box-shadow:none;padding:24px 6px}
-.chan__c:not(.chan__c--pri):hover{background:none;transform:none;box-shadow:none;
+.chan__c:not(.chan__c--pri){grid-template-columns:auto 1fr auto;background:rgba(255,255,255,.018);
+  border:0;border-top:1px solid var(--line-2);clip-path:none;box-shadow:none;padding:24px 18px}
+.chan__c:not(.chan__c--pri):hover{background:rgba(255,255,255,.055);transform:none;box-shadow:none;
   border-top-color:rgba(var(--halo),.55)}
+.chan__go--alt{width:20px;height:20px;color:var(--ink-3);transition:transform .32s var(--ease),color .3s}
+.chan__c:not(.chan__c--pri):hover .chan__go--alt{color:var(--neon);transform:translateX(6px)}
 .chan__c{--cut:18px;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;
   column-gap:18px;row-gap:5px;align-items:center;padding:30px 28px;background:var(--panel-2);
   border:1px solid var(--line-2);

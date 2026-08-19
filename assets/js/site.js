@@ -237,6 +237,15 @@
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
     targets.forEach(function (n) { io.observe(n); });
+
+    /* Failsafe: an entrance is a nicety, readable content is not. If the
+       observer has not reached something within 2.5s — a very tall viewport,
+       a print or capture context, a stalled callback — show it anyway. */
+    setTimeout(function () {
+      targets.forEach(function (n) {
+        if (!n.classList.contains('is-in')) { n.style.transitionDelay = '0ms'; n.classList.add('is-in'); }
+      });
+    }, 2500);
   }
 
   /* ══ SERVICE ROW → HERO-STYLE PHOTO WASH (desktop pointer only) ══════ */
