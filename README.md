@@ -28,8 +28,7 @@ Casi todo se cambia en **un solo archivo**: [`assets/js/content.js`](assets/js/c
 | Qué querés cambiar | Dónde |
 |---|---|
 | Teléfono, WhatsApp, dirección, redes | `SHOP` en `assets/js/content.js` |
-| Link de la agenda (Cal.com) | `SHOP.bookingUrl` |
-| Agenda incrustada en la página | `SHOP.calLink` |
+| Barberos, sus fotos y sus agendas | `SHOP.barbers` |
 | Textos en español e inglés | `I18N.es` / `I18N.en` en el mismo archivo |
 | Horario de atención | `HOURS` al inicio de `assets/js/site.js` |
 | Servicios, precios y duraciones | `index.html`, sección `<section id="servicios">` |
@@ -53,6 +52,12 @@ abajo esté reemplazado por información real.**
 ## ⚠ Lista de reemplazo antes de publicar
 
 Nada de esto es información real del local. Todo fue inventado como marcador de posición.
+
+**Barberos** — `SHOP.barbers` en `assets/js/content.js`
+- [ ] Nombre real de los barberos 2 y 3 — hoy salen como "Barbero 2" y "Barbero 3"
+- [ ] `calLink` de los barberos 2 y 3 — hoy vacío; su botón manda a WhatsApp
+- [ ] Foto de los tres — hoy se muestra un monograma con la inicial
+- [ ] `role` de cada uno (especialidad, una línea) — hoy vacío, se oculta
 
 **Contacto** — `assets/js/content.js`
 - [ ] `phone` y `phoneDial` — hoy `+506 0000-0000` ← **lo único de contacto que falta**
@@ -111,27 +116,53 @@ Los originales a color quedaron en `_source-photos/`.
 
 ---
 
-## La agenda (Cal.com)
+## Los barberos y sus agendas
 
-La agenda de Cal.com está incrustada debajo de los tres canales de reserva, en tema
-oscuro, y se carga sola cuando el visitante se acerca a esa sección (el script pesa
-~90KB y no debe frenar la carga de la página).
+Las tres sillas trabajan al mismo tiempo, así que cada barbero tiene su propia
+agenda de Cal.com. El visitante elige barbero y el calendario de abajo se recarga
+con el de esa persona.
 
-**Google Calendar:** conectalo una sola vez en Cal.com → *Settings* → *Calendars*.
-Cal.com sincroniza en ambos sentidos, así que los horarios que muestra el sitio ya
-respetan lo que tengás en tu Google Calendar. No hace falta tocar el código.
+Todo sale de **una sola lista**, `SHOP.barbers` en
+[`assets/js/content.js`](assets/js/content.js):
+
+```js
+{
+  id:      'barbero-2',                  // identificador interno, sin espacios
+  name:    'Nombre Apellido',            // como lo conocen los clientes
+  role:    { es: 'Degradados', en: 'Fades' },   // una línea corta, o '' para ocultarla
+  photo:   'team-nombre.jpg',            // archivo en assets/img/, o '' para el monograma
+  calLink: 'usuario/30min'               // lo que va después de cal.com/
+}
+```
+
+**Cuando te lleguen los links**, pegá cada uno en su `calLink` y listo: aparece el
+selector con los tres, y la agenda cambia sola al tocar cada uno.
+
+Detalles que ya están resueltos y no hay que programar:
+
+- **Un barbero sin `calLink`** igual sale en la página, marcado como *Agenda
+  pendiente*, y su botón manda a WhatsApp en vez de a un callejón sin salida.
+  Por eso el sitio se puede publicar antes de tener los tres links.
+- **Un barbero sin `photo`** muestra un monograma con su inicial, en neón. Es a
+  propósito: es más honesto que poner una foto de banco de imágenes haciéndola
+  pasar por alguien que trabaja acá. Apenas tengás las fotos reales, poné el
+  nombre del archivo y el monograma desaparece.
+- **Podés agregar o quitar barberos** sumando o borrando elementos de la lista.
+  Con un solo barbero el selector se oculta solo.
+
+**Google Calendar:** cada barbero lo conecta una sola vez en su cuenta de Cal.com,
+en *Settings* → *Calendars*. Cal.com sincroniza en ambos sentidos, así que los
+horarios que muestra el sitio ya respetan lo que cada uno tenga en su calendario.
 
 **Dos cosas por revisar en Cal.com, no en el sitio:**
 
-1. **El evento dura 30 minutos, pero la carta tiene cuatro servicios de 45, 70, 40 y
-   30 min.** Quien reserve "Corte + Barba" está apartando 30 minutos para un servicio
-   de 70. Conviene crear un tipo de evento por servicio y poner cada link en su fila
-   de la carta, o dejar un solo evento genérico y ajustar la duración a mano.
-2. **La agenda se muestra en español aunque el sitio esté en inglés.** Cal.com usa el
-   idioma de tu cuenta y ignora el del sitio. Se cambia en
-   Cal.com → *Settings* → *General* → *Language*.
-
----
+1. **El evento de Marcelo dura 30 minutos, pero la carta tiene cuatro servicios de
+   45, 70, 40 y 30 min.** Quien reserve "Corte + Barba" está apartando 30 minutos
+   para un servicio de 70. Conviene que cada barbero cree un tipo de evento por
+   servicio, o que ajusten la duración a mano.
+2. **La agenda se muestra en español aunque el sitio esté en inglés.** Cal.com usa
+   el idioma de la cuenta e ignora el del sitio. Se cambia en Cal.com →
+   *Settings* → *General* → *Language*.
 
 ## Publicar
 

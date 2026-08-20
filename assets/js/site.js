@@ -46,12 +46,10 @@
     var maps = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(SHOP.mapQuery);
     $$('#mapLink, #mapLink2').forEach(function (a) { a.href = maps; });
 
-    /* Online agenda — never a dead end: falls back to WhatsApp until a URL exists. */
-    var bl = $('#bookLink');
-    if (bl) {
-      if (SHOP.bookingUrl) { bl.href = SHOP.bookingUrl; }
-      else { bl.href = waHref(); bl.removeAttribute('target'); }
-    }
+    /* The agenda card scrolls to the picker on this page rather than
+       sending the visitor to one barber's Cal.com page. */
+    var pw = $('#pendingWa');
+    if (pw) { pw.href = waHref(); pw.target = '_blank'; pw.rel = 'noopener'; }
 
     /* Social — hide what has no link rather than shipping a dead icon. */
     [['#igLink', SHOP.instagram], ['#fbLink', SHOP.facebook]].forEach(function (p) {
@@ -72,11 +70,11 @@
       } else { load(); }
     }
 
-    /* Live agenda. Cal.com wins when configured; a raw iframe is the
-       fallback for a plain Google Calendar appointment schedule. */
+    /* Live agenda. Cal.com wins when any barber has a link; a raw iframe
+       is the fallback for a plain Google Calendar appointment schedule. */
     var mount = $('#schedule-mount');
     if (!mount) return;
-    if (SHOP.calLink) { mountCal(mount); }
+    if (barbersWithAgenda().length) { armAgenda(); }
     else if (SHOP.calendarEmbed) {
       var f = document.createElement('iframe');
       f.src = SHOP.calendarEmbed;
@@ -89,13 +87,123 @@
     }
   }
 
+  /* ══ THE BARBERS ═════════════════════════════════════════════════════
+     Three chairs run at once, so each barber owns a Cal.com calendar and
+     the agenda re-mounts when the visitor picks one.
+     ═════════════════════════════════════════════════════════════════════ */
+  var roster   = (SHOP.barbers || []).slice(0, 12);
+  var picked   = null;   // id of the selected barber
+  var calBooted = false;
+
+  function barbersWithAgenda() {
+    return roster.filter(function (b) { return !!b.calLink; });
+  }
+
+  /* A barber with no name yet still gets a stable label, so a half-filled
+     roster reads as "pending" rather than broken. */
+  function barberName(b, i) {
+    return b.name || (I18N[lang]['team.tbd'] + ' ' + (i + 1));
+  }
+  function barberInitial(b, i) {
+    return (b.name ? b.name.trim()[0] : String(i + 1)).toUpperCase();
+  }
+  /* "Reservar con Marcelo" reads right; "Reservar con Barbero" does not,
+     so a placeholder keeps its number. */
+  function barberShort(b, i) {
+    return b.name ? b.name.trim().split(/\s+/)[0] : barberName(b, i);
+  }
+
+  function renderTeam() {
+    var list = $('#team');
+    if (!list) return;
+    var dict = I18N[lang];
+
+    list.innerHTML = roster.map(function (b, i) {
+      var name    = barberName(b, i);
+      var role    = (b.role && (b.role[lang] || b.role.es)) || '';
+      var pending = !b.calLink;
+      var media   = b.photo
+        ? '<img src="assets/img/' + b.photo + '" alt="' + name + '" loading="lazy">'
+        : '<span class="barber__mono" aria-hidden="true">' + barberInitial(b, i) + '</span>' +
+          (SHOP.DEMO_MODE ? '<span class="barber__ph-tag">' + dict['team.photo'] + '</span>' : '');
+
+      return '<li class="barber' + (pending ? ' is-pending' : '') + '" data-barber="' + b.id + '">' +
+               '<div class="barber__ph">' + media + '</div>' +
+               '<div class="barber__body">' +
+                 '<h3 class="barber__n">' + name + '</h3>' +
+                 (role ? '<p class="barber__r">' + role + '</p>' : '') +
+                 (pending ? '<p class="barber__tag">' + dict['team.pending'] + '</p>' : '') +
+                 '<button type="button" class="btn ' + (pending ? 'btn--ghost' : 'btn--neon') +
+                   ' barber__cta" data-book="' + b.id + '">' +
+                   dict['team.book'] + ' ' + barberShort(b, i) +
+                 '</button>' +
+               '</div>' +
+             '</li>';
+    }).join('');
+
+    $$('[data-book]', list).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        selectBarber(btn.getAttribute('data-book'), true);
+      });
+    });
+  }
+
+  function renderPicker() {
+    var box = $('#picker'), row = $('#pickerRow');
+    if (!box || !row) return;
+    if (roster.length < 2) { box.hidden = true; return; }
+    box.hidden = false;
+
+    row.innerHTML = roster.map(function (b, i) {
+      return '<button type="button" class="picker__b" data-pick="' + b.id + '" aria-pressed="false">' +
+               '<span class="picker__i" aria-hidden="true">' + barberInitial(b, i) + '</span>' +
+               barberShort(b, i) +
+             '</button>';
+    }).join('');
+
+    $$('[data-pick]', row).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        selectBarber(btn.getAttribute('data-pick'), false);
+      });
+    });
+  }
+
+  /* Selection is painted immediately so the picker is never in a null
+     state; the ~90KB Cal script is what waits for the section to approach. */
+  function selectBarber(id, scroll) {
+    var b = roster.filter(function (x) { return x.id === id; })[0];
+    if (!b) return;
+    picked = id;
+
+    $$('[data-pick]').forEach(function (btn) {
+      var on = btn.getAttribute('data-pick') === id;
+      btn.classList.toggle('is-on', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+
+    var mount = $('#schedule-mount'), pend = $('#schedPending');
+    if (b.calLink) {
+      if (pend) pend.hidden = true;
+      if (calBooted) { mountCal(b); }
+      else if (mount) { mount.hidden = false; mount.innerHTML = ''; }
+    } else {
+      if (mount) { mount.hidden = true; mount.innerHTML = ''; }
+      if (pend)  pend.hidden = false;
+    }
+
+    if (scroll) {
+      calBooted = true;                       /* an explicit tap wants it now */
+      if (b.calLink) mountCal(b);
+      var t = $('#agenda');
+      if (t) t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+    }
+  }
+
   /* ══ CAL.COM INLINE AGENDA ═══════════════════════════════════════════
      Loaded lazily — the script is ~90KB and most visitors book by tapping
      WhatsApp, so it must not sit in the critical path. It boots only when
      the booking section is near the viewport.
      ═════════════════════════════════════════════════════════════════════ */
-  var calBooted = false;
-
   function bootCalScript() {
     if (window.Cal) return;
     /* Official Cal.com embed loader (queues calls until embed.js lands). */
@@ -124,41 +232,68 @@
     })(window, 'https://app.cal.com/embed/embed.js', 'init');
   }
 
-  function mountCal(mount) {
+  function mountCal(b) {
+    var mount = $('#schedule-mount');
+    if (!mount) return;
+    bootCalScript();
+
+    /* Each barber gets its own namespace and a fresh element: re-running
+       an inline embed over a used node leaves the old calendar behind. */
+    var ns   = 'valhalla-' + b.id;
+    var slot = 'cal-slot-' + b.id;
+    mount.innerHTML = '<div id="' + slot + '"></div>';
+    mount.hidden = false;
+
+    try {
+      window.Cal('init', ns, { origin: 'https://app.cal.com' });
+      window.Cal.ns[ns]('inline', {
+        elementOrSelector: '#' + slot,
+        calLink: b.calLink,
+        /* We ask Cal for the page's language, but it overrides this from
+           the Cal.com account setting — the agenda currently renders in
+           Spanish in both locales. Change it in
+           Cal.com → Settings → General → Language. */
+        config: { layout: 'month_view', theme: 'dark', locale: lang }
+      });
+      window.Cal.ns[ns]('ui', {
+        theme: 'dark',
+        layout: 'month_view',
+        hideEventTypeDetails: false,
+        cssVarsPerTheme: { dark: { 'cal-brand': '#eaf4ff' } }
+      });
+    } catch (e) {
+      /* Never strand the visitor in an empty box: the three channel
+         cards above still work, so just drop the embed. */
+      mount.hidden = true;
+    }
+  }
+
+  /* Paint the default selection now; load Cal when the visitor nears it. */
+  var agendaArmed = false;
+
+  function armAgenda() {
+    var target = $('#agenda');
+    if (!target) return;
+
+    if (!picked) {
+      var first = barbersWithAgenda()[0] || roster[0];
+      if (first) selectBarber(first.id, false);
+    }
+    if (agendaArmed) return;
+    agendaArmed = true;
+
     var start = function () {
       if (calBooted) return;
       calBooted = true;
-      bootCalScript();
-      mount.hidden = false;
-      try {
-        window.Cal('init', { origin: 'https://app.cal.com' });
-        window.Cal('inline', {
-          elementOrSelector: '#schedule-mount',
-          calLink: SHOP.calLink,
-          /* We ask Cal for the page's language, but it overrides this from
-             the Cal.com account setting — the agenda currently renders in
-             Spanish in both locales. Change it in
-             Cal.com → Settings → General → Language. */
-          config: { layout: 'month_view', theme: 'dark', locale: lang }
-        });
-        window.Cal('ui', {
-          theme: 'dark',
-          layout: 'month_view',
-          hideEventTypeDetails: false,
-          cssVarsPerTheme: { dark: { 'cal-brand': '#eaf4ff' } }
-        });
-      } catch (e) {
-        /* Never strand the visitor in an empty box: the three channel
-           cards above still work, so just drop the embed. */
-        mount.hidden = true;
-      }
+      var b = roster.filter(function (x) { return x.id === picked; })[0];
+      if (b && b.calLink) mountCal(b);
     };
 
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (es) {
         es.forEach(function (e) { if (e.isIntersecting) { start(); io.disconnect(); } });
       }, { rootMargin: '600px' });
-      io.observe(mount.parentElement || mount);
+      io.observe(target);
     } else { start(); }
   }
 
@@ -206,8 +341,11 @@
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
 
+    renderTeam();
+    renderPicker();
     wireLinks();
     renderHours();
+    if (calBooted && picked) { selectBarber(picked, false); }
     if (persist) { try { localStorage.setItem(LANG_KEY, next); } catch (e) {} }
   }
 

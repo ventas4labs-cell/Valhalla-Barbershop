@@ -316,7 +316,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .chan__c--pri .chan__v{color:#3a4048}
 .chan__c--pri:hover{background:#fff;border-color:#fff;color:#08090a}
 .chan__c--pri:hover .ico{color:#08090a;filter:none}
-.sched{margin-top:30px;border:1px solid var(--line-2);min-height:560px;background:var(--bg);
+.sched{margin-top:16px;border:1px solid var(--line-2);min-height:470px;background:var(--bg);
   text-align:left;overflow:hidden}
 .sched[hidden]{display:none}
 /* Cal.com paints its own surface; keep it inside the world's geometry */
@@ -494,4 +494,82 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .hero__act{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .hero__act .btn{width:100%}
   .btn--lg{padding:16px 12px;font-size:.76rem}
+}
+
+/* ── LOS BARBEROS ─────────────────────────────────────────── */
+.sec--team{background:var(--bg-2);border-top:1px solid var(--line)}
+.team{display:grid;gap:12px}
+.barber{--cut:16px;background:var(--panel);border:1px solid var(--line);display:flex;flex-direction:column;
+  clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));
+  transition:border-color .3s var(--ease),background-color .3s var(--ease)}
+.barber:hover{border-color:var(--line-2);background:var(--panel-2)}
+
+.barber__ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--panel-2);
+  display:grid;place-items:center;border-bottom:1px solid var(--line)}
+.barber__ph img{width:100%;height:100%;object-fit:cover}
+
+/* No photo yet: a struck monogram rather than a stock face standing in
+   for a real person who works here. */
+.barber__mono{font-family:var(--fd);font-weight:800;font-size:clamp(4rem,11vw,6.5rem);line-height:1;
+  color:var(--neon);text-shadow:var(--glow-m);position:relative;z-index:1}
+.barber__ph::before{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(48deg,rgba(255,255,255,.028) 0 1px,transparent 1px 9px)}
+.barber__ph-tag{position:absolute;left:0;bottom:0;z-index:2;background:var(--line);color:var(--ink-2);
+  font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;padding:4px 9px;font-weight:600}
+
+.barber__body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:7px;flex:1}
+.barber__n{font-size:clamp(1.35rem,2.6vw,1.72rem);letter-spacing:-.005em}
+.barber__r{color:var(--ink-3);font-size:.88rem;line-height:1.5}
+.barber__tag{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;
+  color:var(--ink-3);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.barber__tag::before{content:"";width:5px;height:5px;background:var(--ink-3);flex:0 0 auto}
+.barber__cta{width:100%;margin-top:auto;padding-top:14px;padding-bottom:14px}
+.barber.is-pending .barber__mono{color:var(--ink-2);text-shadow:none;opacity:.5}
+
+/* ── AGENDA PICKER ────────────────────────────────────────── */
+.agenda{margin-top:clamp(30px,4vw,42px);text-align:left}
+.picker[hidden]{display:none}
+.picker__l{display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:600;margin-bottom:12px}
+.picker__row{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:8px}
+.picker__b{--cut:10px;display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:13px 14px;background:var(--panel-2);border:1px solid var(--line-2);color:var(--ink-2);
+  font-family:var(--fd);font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.03em;
+  clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));
+  transition:color .25s,border-color .25s,background-color .25s,box-shadow .3s}
+.picker__i{display:grid;place-items:center;width:24px;height:24px;flex:0 0 auto;
+  background:var(--line);color:var(--ink-2);font-size:.8rem;transition:background-color .25s,color .25s}
+.picker__b:hover{color:var(--ink);border-color:var(--line-3)}
+.picker__b.is-on{color:var(--neon);border-color:rgba(var(--halo),.6);background:#1b1e23;
+  text-shadow:var(--glow-s);box-shadow:0 0 22px -10px rgba(var(--halo),.7)}
+.picker__b.is-on .picker__i{background:var(--neon);color:#08090a}
+
+.sched-pending{margin-top:16px;border:1px solid var(--line-2);background:var(--panel-2);
+  padding:clamp(28px,5vw,46px);display:grid;gap:18px;justify-items:center;text-align:center}
+.sched-pending[hidden]{display:none}
+.sched-pending p{color:var(--ink-2);max-width:44ch}
+
+@media (min-width:560px){
+  .team{grid-template-columns:repeat(2,1fr)}
+}
+@media (min-width:900px){
+  .team{grid-template-columns:repeat(3,1fr);gap:14px}
+  .nav__links{gap:26px}
+}
+
+/* ── BARBER CARD, NARROW ──────────────────────────────────────
+   A full-width 4:5 portrait per barber turns a three-option chooser
+   into ~1900px of scrolling. On a phone the card lies down. */
+@media (max-width:559px){
+  .barber{flex-direction:row;align-items:stretch}
+  .barber__ph{flex:0 0 116px;width:116px;aspect-ratio:auto;
+    border-bottom:0;border-right:1px solid var(--line)}
+  .barber__mono{font-size:2.7rem}
+  .barber__ph-tag{display:none}
+  .barber__body{padding:15px 16px 16px;gap:5px}
+  .barber__n{font-size:1.22rem}
+  .barber__r{font-size:.82rem}
+  .barber__cta{margin-top:12px;padding-top:11px;padding-bottom:11px;font-size:.7rem}
+  .picker__row{grid-template-columns:1fr}
+  .picker__b{justify-content:flex-start}
 }

@@ -52,6 +52,7 @@
       <a href="#servicios" data-i18n="nav.services">Servicios</a>
       <a href="#trabajo" data-i18n="nav.work">Trabajo</a>
       <a href="#oficio" data-i18n="nav.craft">El oficio</a>
+      <a href="#barberos" data-i18n="nav.team">Barberos</a>
       <a href="#visitanos" data-i18n="nav.visit">Visitanos</a>
     </nav>
 
@@ -72,6 +73,7 @@
     <a href="#servicios" data-i18n="nav.services">Servicios</a>
     <a href="#trabajo" data-i18n="nav.work">Trabajo</a>
     <a href="#oficio" data-i18n="nav.craft">El oficio</a>
+    <a href="#barberos" data-i18n="nav.team">Barberos</a>
     <a href="#visitanos" data-i18n="nav.visit">Visitanos</a>
     <a href="#reservar" class="menu__cta" data-i18n="nav.book">Reservar</a>
   </div>
@@ -213,6 +215,27 @@
   </div>
 </section>
 
+<!-- ════════ LOS BARBEROS ════════ -->
+<section class="sec sec--team" id="barberos">
+  <div class="wrap">
+    <div class="sec__head">
+      <h2 class="h2"><span data-i18n="team.h">Los barberos</span><b class="rule" aria-hidden="true"></b></h2>
+      <p class="sec__note" data-i18n="team.note">Tres sillas trabajando a la vez. Elegí con quién te querés sentar.</p>
+    </div>
+
+    <!-- Cards are built from SHOP.barbers in assets/js/content.js.
+         The three shells below are the no-JavaScript fallback. -->
+    <ul class="team" id="team">
+      <li class="barber"><noscript>Barbero 1</noscript></li>
+      <li class="barber"><noscript>Barbero 2</noscript></li>
+      <li class="barber"><noscript>Barbero 3</noscript></li>
+    </ul>
+    <noscript>
+      <p class="sec__note">Escribinos por WhatsApp o llamanos y te asignamos barbero.</p>
+    </noscript>
+  </div>
+</section>
+
 <!-- ════════ RESERVAR ════════ -->
 <section class="book" id="reservar">
   <div class="wrap book__in">
@@ -234,7 +257,7 @@
         <svg class="chan__go chan__go--alt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
       </a>
 
-      <a class="chan__c" id="bookLink" href="#" target="_blank" rel="noopener">
+      <a class="chan__c" id="bookLink" href="#agenda">
         <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.2" y="5" width="17.6" height="16" /><path d="M3.2 10h17.6M8 3v4M16 3v4M7.5 14h3M7.5 17.5h6"/></svg>
         <span class="chan__k" data-i18n="book.ag.k">Agenda en línea</span>
         <span class="chan__v" data-i18n="book.ag.v">Elegí día y hora vos mismo</span>
@@ -243,12 +266,21 @@
     </div>
 
     <!--
-      GOOGLE CALENDAR MOUNT POINT
-      Drop the scheduling embed (Google Calendar appointment schedule, Calendly, Booksy…) inside
-      #schedule-mount. The section is already sized for it; nothing else needs to change.
-      Google Calendar → Appointment schedules → Share → Embed. Then delete the `hidden` attribute.
+      LIVE AGENDA
+      The picker is built from SHOP.barbers; choosing a barber reloads the Cal.com
+      embed below with that barber's own calendar. Both are rendered by site.js.
     -->
-    <div class="sched" id="schedule-mount" hidden></div>
+    <div class="agenda" id="agenda">
+      <div class="picker" id="picker" role="group" aria-label="Elegí tu barbero" hidden>
+        <span class="picker__l" data-i18n="agenda.pick">Elegí tu barbero</span>
+        <div class="picker__row" id="pickerRow"></div>
+      </div>
+      <div class="sched" id="schedule-mount" hidden></div>
+      <div class="sched-pending" id="schedPending" hidden>
+        <p data-i18n="agenda.pendmsg">Este barbero todavía no tiene agenda en línea. Escribinos por WhatsApp y te lo coordinamos.</p>
+        <a class="btn btn--neon" id="pendingWa" href="#" data-i18n="agenda.wa">Coordinar por WhatsApp</a>
+      </div>
+    </div>
 
     <p class="book__fine" data-i18n="book.fine">Cancelaciones con 2 horas de anticipación, por el mismo canal.</p>
   </div>

@@ -21,22 +21,56 @@ const SHOP = {
     en: 'Hi Valhalla! I would like to book an appointment.'
   },
 
-  /* ── ONLINE BOOKING ─────────────────────────────────────────────────────
-     The public Cal.com page. Opened by the "Agenda en línea" card.      */
-  bookingUrl: 'https://cal.com/gabriel-marcelo-hidalgo-castro-ov3cuj/30min',
+  /* ═══════════════════════════════════════════════════════════════════
+     THE BARBERS
+     Three chairs work at once, so the visitor picks a barber and the
+     agenda below reloads with that barber's own Cal.com calendar.
 
-  /* ── LIVE AGENDA (Cal.com inline embed) ─────────────────────────────────
-     Same booking page, rendered inside the page so nobody has to leave.
-     It is the part after cal.com/ — no domain, no leading slash.
-     Set to '' to drop the embed and keep only the link.
+     Each barber needs:
+       name     the name customers know them by
+       role     one short line — speciality, or '' to hide it
+       photo    file in assets/img/ (e.g. 'team-marcelo.jpg'), or ''
+                to fall back to a neon monogram of their initial
+       calLink  the part of their Cal.com URL after cal.com/
+                — no domain, no leading slash
 
-     Cal.com syncs both ways with Google Calendar: connect it once under
-     Cal.com → Settings → Calendars, and the slots shown here respect
-     whatever is already on that calendar.                              */
-  calLink: 'gabriel-marcelo-hidalgo-castro-ov3cuj/30min',
+     A barber with no calLink still gets a card; their booking button
+     sends the customer to WhatsApp instead of a dead end, so you can
+     ship this before all three links exist.
+
+     Cal.com syncs both ways with Google Calendar: each barber connects
+     theirs once under Cal.com → Settings → Calendars, and the slots
+     shown here respect whatever is already on it.
+     ═══════════════════════════════════════════════════════════════════ */
+  barbers: [
+    {
+      id:      'marcelo',
+      name:    'Marcelo Hidalgo',
+      role:    { es: '', en: '' },
+      photo:   '',
+      calLink: 'gabriel-marcelo-hidalgo-castro-ov3cuj/30min'
+    },
+    {
+      /* ⚠ REPLACE — name, photo and Cal.com link pending */
+      id:      'barbero-2',
+      name:    '',
+      role:    { es: '', en: '' },
+      photo:   '',
+      calLink: ''
+    },
+    {
+      /* ⚠ REPLACE — name, photo and Cal.com link pending */
+      id:      'barbero-3',
+      name:    '',
+      role:    { es: '', en: '' },
+      photo:   '',
+      calLink: ''
+    }
+  ],
 
   /* Raw <iframe> src, only if you ever swap Cal.com for a plain Google
-     Calendar appointment schedule. Ignored while calLink is set.        */
+     Calendar appointment schedule. Ignored while any barber has a
+     calLink.                                                            */
   calendarEmbed: '',
 
   /* ── LOCATION ───────────────────────────────────────────────────────── */
@@ -71,6 +105,19 @@ const I18N = {
     'nav.craft':    'El oficio',
     'nav.visit':    'Visitanos',
     'nav.book':     'Reservar',
+
+    'nav.team':    'Barberos',
+
+    'team.h':      'Los barberos',
+    'team.note':   'Tres sillas trabajando a la vez. Elegí con quién te querés sentar.',
+    'team.tbd':    'Barbero',
+    'team.photo':  'Foto pendiente',
+    'team.pending':'Agenda pendiente',
+    'team.book':   'Reservar con',
+
+    'agenda.pick':    'Elegí tu barbero',
+    'agenda.pendmsg': 'Este barbero todavía no tiene agenda en línea. Escribinos por WhatsApp y te lo coordinamos.',
+    'agenda.wa':      'Coordinar por WhatsApp',
 
     'hero.lead':  'Corte, barba y afeitado clásico con navaja. Sin prisa, sin improvisar.',
     'hero.cta1':  'Reservar cita',
@@ -107,7 +154,7 @@ const I18N = {
     'book.wa.aria': 'Reservar por WhatsApp',
     'book.tel.k':   'Llamar',
     'book.ag.k':    'Agenda en línea',
-    'book.ag.v':    'Elegí día y hora en la agenda',
+    'book.ag.v':    'Elegí barbero, día y hora acá mismo',
     'book.fine':    'Cancelaciones con 2 horas de anticipación, por el mismo canal.',
 
     'visit.h':     'Visitanos',
@@ -146,6 +193,19 @@ const I18N = {
     'nav.visit':    'Visit us',
     'nav.book':     'Book',
 
+    'nav.team':    'Barbers',
+
+    'team.h':      'The barbers',
+    'team.note':   'Three chairs working at once. Pick whose chair you want.',
+    'team.tbd':    'Barber',
+    'team.photo':  'Photo pending',
+    'team.pending':'Agenda pending',
+    'team.book':   'Book with',
+
+    'agenda.pick':    'Pick your barber',
+    'agenda.pendmsg': "This barber has no online agenda yet. Message us on WhatsApp and we'll set it up for you.",
+    'agenda.wa':      'Sort it on WhatsApp',
+
     'hero.lead':  'Cuts, beards and classic straight-razor shaves. No rush, nothing improvised.',
     'hero.cta1':  'Book a chair',
     'hero.cta2':  'See prices',
@@ -181,7 +241,7 @@ const I18N = {
     'book.wa.aria': 'Book via WhatsApp',
     'book.tel.k':   'Call',
     'book.ag.k':    'Online agenda',
-    'book.ag.v':    'Pick your own slot in the agenda',
+    'book.ag.v':    'Pick barber, day and time right here',
     'book.fine':    'Cancellations at least 2 hours ahead, through the same channel.',
 
     'visit.h':     'Visit us',
