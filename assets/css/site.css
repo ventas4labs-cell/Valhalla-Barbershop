@@ -510,7 +510,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* No photo yet: a struck monogram rather than a stock face standing in
    for a real person who works here. */
-.barber__mono{font-family:var(--fd);font-weight:800;font-size:clamp(4rem,11vw,6.5rem);line-height:1;
+.barber__mono{font-family:var(--fd);font-weight:800;font-size:clamp(3.4rem,8.5vw,5.4rem);line-height:1;
+  letter-spacing:-.02em;
   color:var(--neon);text-shadow:var(--glow-m);position:relative;z-index:1}
 .barber__ph::before{content:"";position:absolute;inset:0;
   background:repeating-linear-gradient(48deg,rgba(255,255,255,.028) 0 1px,transparent 1px 9px)}
@@ -537,8 +538,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   font-family:var(--fd);font-weight:700;font-size:1.05rem;text-transform:uppercase;letter-spacing:.03em;
   clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));
   transition:color .25s,border-color .25s,background-color .25s,box-shadow .3s}
-.picker__i{display:grid;place-items:center;width:24px;height:24px;flex:0 0 auto;
-  background:var(--line);color:var(--ink-2);font-size:.8rem;transition:background-color .25s,color .25s}
+.picker__i{display:grid;place-items:center;min-width:26px;height:24px;padding-inline:5px;flex:0 0 auto;
+  background:var(--line);color:var(--ink-2);font-size:.78rem;letter-spacing:.02em;
+  transition:background-color .25s,color .25s}
 .picker__b:hover{color:var(--ink);border-color:var(--line-3)}
 .picker__b.is-on{color:var(--neon);border-color:rgba(var(--halo),.6);background:#1b1e23;
   text-shadow:var(--glow-s);box-shadow:0 0 22px -10px rgba(var(--halo),.7)}
@@ -564,7 +566,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .barber{flex-direction:row;align-items:stretch}
   .barber__ph{flex:0 0 116px;width:116px;aspect-ratio:auto;
     border-bottom:0;border-right:1px solid var(--line)}
-  .barber__mono{font-size:2.7rem}
+  .barber__mono{font-size:2.3rem}
   .barber__ph-tag{display:none}
   .barber__body{padding:15px 16px 16px;gap:5px}
   .barber__n{font-size:1.22rem}

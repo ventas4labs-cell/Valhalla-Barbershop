@@ -104,8 +104,25 @@
   function barberName(b, i) {
     return b.name || (I18N[lang]['team.tbd'] + ' ' + (i + 1));
   }
+  /* Two characters, not one: "Marcelo" and "Mariano" both start with M, and
+     a chooser whose three tiles read M / J / M identifies nobody. First +
+     last initial where there is a surname, otherwise the first two letters. */
   function barberInitial(b, i) {
-    return (b.name ? b.name.trim()[0] : String(i + 1)).toUpperCase();
+    if (!b.name) return String(i + 1);
+    var parts = b.name.trim().split(/\s+/);
+    var mark = parts.length > 1
+      ? parts[0][0] + parts[parts.length - 1][0]
+      : parts[0].slice(0, 2);
+    mark = mark.toUpperCase();
+
+    /* Still ambiguous (two Jose Ramirez)? Fall back to a numbered mark. */
+    var clash = roster.some(function (o, k) {
+      if (k >= i || !o.name) return false;
+      var p = o.name.trim().split(/\s+/);
+      var m = (p.length > 1 ? p[0][0] + p[p.length - 1][0] : p[0].slice(0, 2)).toUpperCase();
+      return m === mark;
+    });
+    return clash ? mark[0] + (i + 1) : mark;
   }
   /* "Reservar con Marcelo" reads right; "Reservar con Barbero" does not,
      so a placeholder keeps its number. */

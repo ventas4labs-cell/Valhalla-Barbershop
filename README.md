@@ -54,8 +54,7 @@ abajo esté reemplazado por información real.**
 Nada de esto es información real del local. Todo fue inventado como marcador de posición.
 
 **Barberos** — `SHOP.barbers` en `assets/js/content.js`
-- [ ] Nombre real de los barberos 2 y 3 — hoy salen como "Barbero 2" y "Barbero 3"
-- [ ] `calLink` de los barberos 2 y 3 — hoy vacío; su botón manda a WhatsApp
+- [ ] `calLink` de Jose y Mariano — hoy vacío; su botón manda a WhatsApp
 - [ ] Foto de los tres — hoy se muestra un monograma con la inicial
 - [ ] `role` de cada uno (especialidad, una línea) — hoy vacío, se oculta
 

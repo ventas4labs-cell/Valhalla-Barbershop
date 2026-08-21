@@ -51,17 +51,17 @@ const SHOP = {
       calLink: 'gabriel-marcelo-hidalgo-castro-ov3cuj/30min'
     },
     {
-      /* ⚠ REPLACE — name, photo and Cal.com link pending */
-      id:      'barbero-2',
-      name:    '',
+      /* ⚠ REPLACE — photo and Cal.com link pending */
+      id:      'jose',
+      name:    'Jose',
       role:    { es: '', en: '' },
       photo:   '',
       calLink: ''
     },
     {
-      /* ⚠ REPLACE — name, photo and Cal.com link pending */
-      id:      'barbero-3',
-      name:    '',
+      /* ⚠ REPLACE — photo and Cal.com link pending */
+      id:      'mariano',
+      name:    'Mariano',
       role:    { es: '', en: '' },
       photo:   '',
       calLink: ''
