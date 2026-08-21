@@ -1,0 +1,10 @@
+# Camera originals — 19MB that no visitor ever requests.
+# They stay in git; they just don't belong on the CDN.
+_source-photos/
+
+# Project docs and tooling
+README.md
+DESIGN.md
+PRODUCT.md
+.impeccable/
+.claude/
