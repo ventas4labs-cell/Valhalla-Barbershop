@@ -144,8 +144,6 @@ const I18N = {
     'craft.f1d': 'Reservá y entrás a la hora. Si caés sin cita, te decimos la espera real antes de que te sentés.',
     'craft.f2t': 'Herramienta limpia',
     'craft.f2d': 'Navaja de hoja desechable y máquina desinfectada entre cliente y cliente. Sin excepciones.',
-    'craft.f3t': 'Si no queda, se arregla',
-    'craft.f3d': 'Volvé dentro de los 7 días y lo corregimos sin cobrar.',
 
     'book.h':       'Reservá en 30 segundos',
     'book.lead':    'Elegí tu barbero, el día y la hora. Sin llamadas y sin esperar respuesta.',
@@ -230,8 +228,6 @@ const I18N = {
     'craft.f1d': 'Book and you sit on time. Walk in and we tell you the real wait before you take a seat.',
     'craft.f2t': 'Clean tools',
     'craft.f2d': 'Single-use razor blades and clippers disinfected between clients. No exceptions.',
-    'craft.f3t': "If it's not right, we fix it",
-    'craft.f3d': 'Come back within 7 days and we correct it at no charge.',
 
     'book.h':       'Book in 30 seconds',
     'book.lead':    'Pick your barber, the day and the time. No phone call, no waiting for a reply.',
