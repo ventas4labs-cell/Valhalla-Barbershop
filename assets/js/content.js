@@ -148,14 +148,13 @@ const I18N = {
     'craft.f3d': 'Volvé dentro de los 7 días y lo corregimos sin cobrar.',
 
     'book.h':       'Reservá en 30 segundos',
-    'book.lead':    'Elegí el canal que te sirva. Contestamos en horario de local.',
+    'book.lead':    'Elegí tu barbero, el día y la hora. Sin llamadas y sin esperar respuesta.',
     'book.wa.k':    'WhatsApp',
     'book.wa.v':    'Mensaje directo con el servicio ya escrito',
     'book.wa.aria': 'Reservar por WhatsApp',
     'book.tel.k':   'Llamar',
-    'book.ag.k':    'Agenda en línea',
-    'book.ag.v':    'Elegí barbero, día y hora acá mismo',
-    'book.fine':    'Cancelaciones con 2 horas de anticipación, por el mismo canal.',
+    'book.alt':     '¿Preferís coordinarlo hablando?',
+    'book.fine':    'Cancelaciones con 2 horas de anticipación, por el mismo medio.',
 
     'visit.h':     'Visitanos',
     'visit.addr':  'Dirección',
@@ -235,13 +234,12 @@ const I18N = {
     'craft.f3d': 'Come back within 7 days and we correct it at no charge.',
 
     'book.h':       'Book in 30 seconds',
-    'book.lead':    'Pick whichever channel suits you. We answer during shop hours.',
+    'book.lead':    'Pick your barber, the day and the time. No phone call, no waiting for a reply.',
     'book.wa.k':    'WhatsApp',
     'book.wa.v':    'Direct message with the service already filled in',
     'book.wa.aria': 'Book via WhatsApp',
     'book.tel.k':   'Call',
-    'book.ag.k':    'Online agenda',
-    'book.ag.v':    'Pick barber, day and time right here',
+    'book.alt':     'Rather sort it by talking to us?',
     'book.fine':    'Cancellations at least 2 hours ahead, through the same channel.',
 
     'visit.h':     'Visit us',

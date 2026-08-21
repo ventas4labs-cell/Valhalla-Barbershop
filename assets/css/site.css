@@ -282,40 +282,29 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .book__in{text-align:center}
 .book__h{font-size:clamp(2.1rem,6vw,4rem);letter-spacing:-.02em}
 .book__lead{margin:16px auto 0;color:var(--ink-2);max-width:44ch}
-/* The primary channel is a field, not a card in a row of three; Call and
-   Agenda sit under it as text-led alternatives. Three identical icon+heading
-   +text cards is the shape this page exists to refuse. */
-.chan{display:grid;gap:0;margin-top:clamp(34px,4.5vw,54px);text-align:left}
-.chan__c--pri{padding:clamp(30px,3.4vw,40px) clamp(26px,3vw,34px);margin-bottom:18px}
-.chan__c--pri .chan__k{font-size:clamp(1.8rem,3.4vw,2.5rem)}
-.chan__c--pri{grid-template-columns:auto 1fr auto}
-.chan__c--pri .ico{width:42px;height:42px}
-.chan__go{grid-row:1/3;grid-column:3;width:30px;height:30px;justify-self:end;
-  transition:transform .32s var(--ease)}
-.chan__c--pri:hover .chan__go{transform:translateX(7px)}
-.chan__c:not(.chan__c--pri){grid-template-columns:auto 1fr auto;background:rgba(255,255,255,.018);
-  border:0;border-top:1px solid var(--line-2);clip-path:none;box-shadow:none;padding:24px 18px}
-.chan__c:not(.chan__c--pri):hover{background:rgba(255,255,255,.055);transform:none;box-shadow:none;
-  border-top-color:rgba(var(--halo),.55)}
-.chan__go--alt{width:20px;height:20px;color:var(--ink-3);transition:transform .32s var(--ease),color .3s}
-.chan__c:not(.chan__c--pri):hover .chan__go--alt{color:var(--neon);transform:translateX(6px)}
-.chan__c{--cut:18px;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;
-  column-gap:18px;row-gap:5px;align-items:center;padding:30px 28px;background:var(--panel-2);
-  border:1px solid var(--line-2);
+/* The agenda leads this section. WhatsApp and Call sit under it as the
+   talk-to-a-human alternative, deliberately quieter — they used to be the
+   loudest thing here and were absorbing bookings the calendar should take. */
+.alt{margin-top:clamp(38px,5vw,60px);padding-top:clamp(24px,3vw,34px);border-top:1px solid var(--line)}
+.alt__l{display:block;text-align:center;color:var(--ink-3);font-size:.78rem;
+  letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:18px}
+
+.chan{display:grid;gap:10px;text-align:left}
+.chan__c{--cut:12px;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;
+  column-gap:16px;row-gap:3px;align-items:center;padding:19px 20px;
+  background:rgba(255,255,255,.022);border:1px solid var(--line);
   clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));
-  transition:border-color .3s var(--ease),background-color .3s var(--ease),transform .25s var(--ease),box-shadow .3s var(--ease)}
-.chan__c .ico{grid-row:1/3;width:34px;height:34px;color:var(--ink-2);transition:color .3s,filter .4s}
-.chan__k{font-family:var(--fd);font-weight:700;font-size:1.62rem;text-transform:uppercase;letter-spacing:.02em;line-height:1}
-.chan__v{color:var(--ink-3);font-size:.87rem;line-height:1.4}
-.chan__c:hover{border-color:rgba(var(--halo),.55);background:#1b1e23;transform:translateY(-2px);
-  box-shadow:0 14px 34px -20px rgba(0,0,0,.9),0 0 26px -12px rgba(var(--halo),.5)}
-.chan__c:hover .ico{color:var(--neon);filter:drop-shadow(0 0 6px rgba(var(--halo),.7))}
-.chan__c--pri{background:var(--neon);border-color:var(--neon);color:#08090a;
-  box-shadow:0 10px 34px -16px rgba(var(--halo),.9)}
-.chan__c--pri .ico{color:#08090a;fill:#08090a}
-.chan__c--pri .chan__v{color:#3a4048}
-.chan__c--pri:hover{background:#fff;border-color:#fff;color:#08090a}
-.chan__c--pri:hover .ico{color:#08090a;filter:none}
+  transition:border-color .3s var(--ease),background-color .3s var(--ease)}
+.chan__c .ico{grid-row:1/3;width:26px;height:26px;color:var(--ink-3);transition:color .3s,filter .4s}
+.chan__k{font-family:var(--fd);font-weight:700;font-size:1.24rem;text-transform:uppercase;
+  letter-spacing:.02em;line-height:1;color:var(--ink-2);transition:color .3s}
+.chan__v{color:var(--ink-3);font-size:.83rem;line-height:1.4}
+.chan__go{grid-row:1/3;grid-column:3;width:19px;height:19px;justify-self:end;color:var(--ink-3);
+  transition:transform .32s var(--ease),color .3s}
+.chan__c:hover{border-color:var(--line-3);background:rgba(255,255,255,.05)}
+.chan__c:hover .ico,.chan__c:hover .chan__k{color:var(--ink)}
+.chan__c:hover .chan__go{color:var(--neon);transform:translateX(5px)}
+
 .sched{margin-top:16px;border:1px solid var(--line-2);min-height:470px;background:var(--bg);
   text-align:left;overflow:hidden}
 .sched[hidden]{display:none}
@@ -392,7 +381,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* ── BREAKPOINTS ──────────────────────────────────────────── */
 @media (min-width:560px){
   .chan{grid-template-columns:1fr 1fr}
-  .chan__c--pri{grid-column:1/-1}
   .says{grid-template-columns:repeat(2,1fr)}
   .foot__in{grid-template-columns:1fr 1fr}
 }
@@ -410,8 +398,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .craft{grid-template-columns:1fr 1fr;align-items:stretch}
   .craft__media{aspect-ratio:auto;min-height:100%}
   .craft__body{padding-inline:clamp(40px,4.5vw,72px);margin:0;max-width:none;border-top:0;border-left:1px solid var(--line)}
-  .chan{grid-template-columns:1fr 1fr}
-  .chan__c--pri{grid-column:1/-1}
   .says{grid-template-columns:repeat(3,1fr)}
   .visit{grid-template-columns:1fr 1.15fr;align-items:start}
   .visit__map{min-height:460px}
@@ -528,7 +514,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .barber.is-pending .barber__mono{color:var(--ink-2);text-shadow:none;opacity:.5}
 
 /* ── AGENDA PICKER ────────────────────────────────────────── */
-.agenda{margin-top:clamp(30px,4vw,42px);text-align:left}
+.agenda{margin-top:clamp(34px,4.5vw,54px);text-align:left}
 .picker[hidden]{display:none}
 .picker__l{display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
   color:var(--ink-3);font-weight:600;margin-bottom:12px}

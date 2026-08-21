@@ -240,35 +240,12 @@
 <section class="book" id="reservar">
   <div class="wrap book__in">
     <h2 class="book__h" data-i18n="book.h">Reservá en 30 segundos</h2>
-    <p class="book__lead" data-i18n="book.lead">Elegí el canal que te sirva. Contestamos en horario de local.</p>
-
-    <div class="chan">
-      <a class="chan__c chan__c--pri" id="waLink" href="#" data-i18n-aria="book.wa.aria">
-        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2A9.9 9.9 0 0 0 2.1 11.9c0 1.75.46 3.46 1.34 4.97L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01A9.9 9.9 0 0 0 22 11.94 9.9 9.9 0 0 0 12.04 2Z" fill="none"/><path d="M8.6 7.3c-.2-.45-.4-.46-.6-.47h-.5c-.18 0-.47.07-.71.34-.25.27-.94.9-.94 2.2s.96 2.56 1.1 2.74c.13.18 1.860 2.9 4.6 3.95 2.28.88 2.74.7 3.24.66.5-.05 1.6-.64 1.83-1.26.22-.62.22-1.15.16-1.26-.07-.11-.25-.18-.52-.31-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.13-.61.14-.18.27-.7.87-.86 1.05-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.34-1.6-1.5-1.87-.16-.27-.02-.42.12-.55.12-.12.27-.32.4-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.6-1.45-.85-1.98Z"/><path d="M12.04 2A9.9 9.9 0 0 0 2.1 11.9c0 1.75.46 3.46 1.34 4.97L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01A9.9 9.9 0 0 0 22 11.94 9.9 9.9 0 0 0 12.04 2Zm0 1.67a8.2 8.2 0 0 1 8.24 8.27 8.2 8.2 0 0 1-8.23 8.2h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.37 8.2 8.2 0 0 1 8.24-8.23Z"/></svg>
-        <span class="chan__k" data-i18n="book.wa.k">WhatsApp</span>
-        <span class="chan__v" data-i18n="book.wa.v">Mensaje directo con el servicio ya escrito</span>
-        <svg class="chan__go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
-      </a>
-
-      <a class="chan__c" id="telLink" href="#">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.2 3.5h3l1.5 3.8-2 1.4a12.4 12.4 0 0 0 5.6 5.6l1.4-2 3.8 1.5v3a1.8 1.8 0 0 1-2 1.8A16.6 16.6 0 0 1 4.4 5.5a1.8 1.8 0 0 1 1.8-2Z"/></svg>
-        <span class="chan__k" data-i18n="book.tel.k">Llamar</span>
-        <span class="chan__v" id="telText">+506 0000-0000</span>
-        <svg class="chan__go chan__go--alt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
-      </a>
-
-      <a class="chan__c" id="bookLink" href="#agenda">
-        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.2" y="5" width="17.6" height="16" /><path d="M3.2 10h17.6M8 3v4M16 3v4M7.5 14h3M7.5 17.5h6"/></svg>
-        <span class="chan__k" data-i18n="book.ag.k">Agenda en línea</span>
-        <span class="chan__v" data-i18n="book.ag.v">Elegí día y hora vos mismo</span>
-        <svg class="chan__go chan__go--alt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
+    <p class="book__lead" data-i18n="book.lead">Elegí tu barbero, el día y la hora. Sin llamadas y sin esperar respuesta.</p>
 
     <!--
-      LIVE AGENDA
-      The picker is built from SHOP.barbers; choosing a barber reloads the Cal.com
-      embed below with that barber's own calendar. Both are rendered by site.js.
+      LIVE AGENDA — the primary action, so it comes first and nothing competes
+      with it. The picker is built from SHOP.barbers; choosing a barber reloads
+      the Cal.com embed with that barber's own calendar. Both render in site.js.
     -->
     <div class="agenda" id="agenda">
       <div class="picker" id="picker" role="group" aria-label="Elegí tu barbero" hidden>
@@ -279,6 +256,26 @@
       <div class="sched-pending" id="schedPending" hidden>
         <p data-i18n="agenda.pendmsg">Este barbero todavía no tiene agenda en línea. Escribinos por WhatsApp y te lo coordinamos.</p>
         <a class="btn btn--neon" id="pendingWa" href="#" data-i18n="agenda.wa">Coordinar por WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- Secondary. Deliberately below the agenda and deliberately quieter. -->
+    <div class="alt">
+      <span class="alt__l" data-i18n="book.alt">¿Preferís coordinarlo hablando?</span>
+      <div class="chan">
+        <a class="chan__c" id="waLink" href="#" data-i18n-aria="book.wa.aria">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2A9.9 9.9 0 0 0 2.1 11.9c0 1.75.46 3.46 1.34 4.97L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01A9.9 9.9 0 0 0 22 11.94 9.9 9.9 0 0 0 12.04 2Z" fill="none"/><path d="M8.6 7.3c-.2-.45-.4-.46-.6-.47h-.5c-.18 0-.47.07-.71.34-.25.27-.94.9-.94 2.2s.96 2.56 1.1 2.74c.13.18 1.860 2.9 4.6 3.95 2.28.88 2.74.7 3.24.66.5-.05 1.6-.64 1.83-1.26.22-.62.22-1.15.16-1.26-.07-.11-.25-.18-.52-.31-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.13-.61.14-.18.27-.7.87-.86 1.05-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.17-1.34-.8-.71-1.34-1.6-1.5-1.87-.16-.27-.02-.42.12-.55.12-.12.27-.32.4-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.6-1.45-.85-1.98Z"/><path d="M12.04 2A9.9 9.9 0 0 0 2.1 11.9c0 1.75.46 3.46 1.34 4.97L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01A9.9 9.9 0 0 0 22 11.94 9.9 9.9 0 0 0 12.04 2Zm0 1.67a8.2 8.2 0 0 1 8.24 8.27 8.2 8.2 0 0 1-8.23 8.2h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.37 8.2 8.2 0 0 1 8.24-8.23Z"/></svg>
+          <span class="chan__k" data-i18n="book.wa.k">WhatsApp</span>
+          <span class="chan__v" data-i18n="book.wa.v">Mensaje directo con el servicio ya escrito</span>
+          <svg class="chan__go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+        </a>
+
+        <a class="chan__c" id="telLink" href="#">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.2 3.5h3l1.5 3.8-2 1.4a12.4 12.4 0 0 0 5.6 5.6l1.4-2 3.8 1.5v3a1.8 1.8 0 0 1-2 1.8A16.6 16.6 0 0 1 4.4 5.5a1.8 1.8 0 0 1 1.8-2Z"/></svg>
+          <span class="chan__k" data-i18n="book.tel.k">Llamar</span>
+          <span class="chan__v" id="telText">+506 0000-0000</span>
+          <svg class="chan__go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg>
+        </a>
       </div>
     </div>
 
